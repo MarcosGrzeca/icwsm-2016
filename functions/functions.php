@@ -23,7 +23,6 @@ function getTweetById($id) {
 }
 
 function read_file($local_file) {
-    flush();
     $linhas = array();
     $file = fopen($local_file, "r");
     while(!feof($file)) {
@@ -36,7 +35,18 @@ function read_file($local_file) {
 }
 
 function query($sql) {
-    return Connection::get()->query($sql);
+    try {
+        $mys = Connection::get()->query($sql);
+        if ($mys) {
+            return $mys;
+        } else {
+            throw new Exception(Connection::get()->error, 1);
+        }
+    } catch (Exception $e) {
+        debug("CATCH");
+        debug($sql);
+        die($e->getMessage());
+    }
 }
 
 function getRows($result) {

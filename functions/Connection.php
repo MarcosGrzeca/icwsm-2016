@@ -3,13 +3,18 @@
 class Connection {
 
 	protected static $conn;
+	protected static $bd = "icwsm-2016";
 
 	private function __construct() {
 		self::connect();
 	}
 
+	public static function setBD($bdAlt) {
+		self::$bd = $bdAlt;
+	}
+
 	private static function connect() {
-		self::$conn = new mysqli("localhost", "root", "", "icwsm-2016");
+		self::$conn = new mysqli("localhost", "root", "", self::$bd);
 
 	    /* check connection */
 	    if (self::$conn->connect_errno) {
