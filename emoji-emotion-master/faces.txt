@@ -1,0 +1,384 @@
+%%%%%
+%%%%% Faces:
+%%%%%
+%%%%% [1]: For a list of how several vendors display
+%%%%%   emoji: http://www.unicode.org/Public/emoji/1.0/
+%%%%%   full-emoji-list.html
+%%%%%
+%%%%% [2]: For information regarding the names emoji's
+%%%%%      often go by: http://emojipedia.org/people/
+%%%%%
+%%%%% [3]: http://emojipedia.org/
+%%%%%
+
+% `smile` receives an AFINN score of `2`.
+smile: 2
+smiley: 2
+
+% `thesaurus.com` provides the synonym `cheerful`, which
+% receives an AFINN score of `2`.
+grinning: 2
+
+% Gemoji tags `blush` as `proud`. `proud` receives an AFINN
+% score of `2`.
+blush: 2
+
+% `relaxed` receives an AFINN score of `2`.
+relaxed: 2
+
+% `thesaurus.com` provides the synonym `sparkle`, which
+% receives an AFINN score of `3`.
+wink: 3
+
+% A hard expression to classify. The closest IMHO in
+% AFINN is `heartfelt`, which receives a score of `3`.
+heart_eyes: 3
+
+% `kiss` receives an AFINN score of `2`. `love` a `3`.
+% I'd say `kissing_heart` is most close to `love`, thus I
+% gave it a `3`, whereas the other receive a `2` for
+% kissing.
+kissing_heart: 3
+kissing_closed_eyes: 2
+kissing: 2
+kissing_smiling_eyes: 2
+
+% Stuck out tongues are quite silly. Gemoji tags
+% `stuck_out_tongue_winking_eye` as `silly` and `prank`,
+% and `stuck_out_tongue_closed_eyes` as `prank`.
+% `silly` receives an AFINN score of `-1` (and the related
+% `foolish` as `-2`). `prank`s related `gag` and `trick`
+% both receive a `-2`. But, the closed eyes in
+% `stuck_out_tongue_closed_eyes` and the normal eyes in
+% `stuck_out_tongue` are both quite happy.
+stuck_out_tongue_winking_eye: -1
+stuck_out_tongue_closed_eyes: 0
+stuck_out_tongue: 1
+
+% `flushed`, used to denote `embarrassment`[2]. The latter
+% receiving an AFINN score of `-2`.
+flushed: -2
+
+% Although `grinning` receives a `2` as seen above,
+% the `grin` emoji is also known as `frustrated`,
+% `freezing`, and `cold`.
+% Rumour has it, Apple created this emoji to look
+% as a `grimacing face` by accident, and other vendors
+% kept this mistake in place[2].
+% Therefore, this emoji is classified as a slightly
+% negative `-1`.
+% EDIT: Apple has fixed this, and others' have too[3],
+% so I’m reclassifying as `2`.
+grin: 2
+
+% `pensive` receives an AFINN score of `-1`.
+pensive: -1
+
+% `relieved` receives an AFINN score of `2`.
+relieved: 2
+
+% `unamused`, used to denote `dissatisfied`[2]. The latter
+% receiving an AFINN score of `-2`.
+unamused: -2
+
+% `disappointed` receives an AFINN score of `-2`.
+disappointed: -2
+
+% `persevere`, used to denote `helpless`[2]. The latter
+% receiving an AFINN score of `-2`.
+persevere: -2
+
+% `cry` receives an AFINN score of `-1`, `crying`
+% receives `-2`. As the emoji is arguably in the middle
+% of crying, `cry` receives `crying`s `-2`.
+cry: -2
+
+% `joy` receives an AFINN score of `3`.
+joy: 3
+
+% `sob`, also known as `loudly crying`, is not in AFINN.
+% Due to the superlativeness to the above `cry`, sob
+% receives a `-3`.
+sob: -3
+
+% Not in AFINN, neither is `drool`, `snot`, etc.
+% Thus, a neutral `0`.
+sleepy: 0
+
+% `disappointed` is in AFINN as `-2`, and `relieved`
+% as `2`. As the face[2] looks quite negative, I
+% weighted the score slightly towards `-2`.
+disappointed_relieved: -1
+
+% `cold_sweat`, used to denote `nervousness`[2]. The latter
+% receiving an AFINN score of `-2`.
+cold_sweat: -2
+
+% A hard one to pin-point. It's quite `happy` (`3`), but
+% sweating. Thus a `2`.
+sweat_smile: 2
+
+% Sometimes depicted `unhappy` (`-2`), sometimes
+% neutral (`0`)[2]. Thus an average `-1`.
+sweat: -1
+
+% `weary` receives an AFINN score of `-2`.
+weary: -2
+
+% `tired` receives an AFINN score of `-2`.
+tired_face: -2
+
+% `fearful` receives an AFINN score of `-2`.
+fearful: -2
+
+% `scream` receives an AFINN score of `-2`. However,
+% due to its exaggerated expression by vendors, a `-3`.
+scream: -3
+
+% `angry` receives an AFINN score of `-3`.
+angry: -3
+
+% `rage` receives an AFINN score of `-2`. However,
+% due to its exaggerated expression by vendors, a `-4`.
+rage: -4
+
+% `triumph` receives an AFINN score of `4`. However,
+% it can be seen as angry and is sometimes just
+% called 'face with stream from nose', so it
+% is given an average of `0`
+triumph: 0
+
+% On the verge of tears[2]. Therefore, equal to `cry`.
+confounded: -2
+
+% `laughing` receives an AFINN score of `1`.
+laughing: 1
+
+% `yummy` receives an AFINN score of `3`.
+yum: 3
+
+% Quite neutral, but its connotation with diseases makes
+% it slightly negative.
+mask: -1
+
+% `sunglasses`, used to denote `cool`[2]. The latter
+% receiving an AFINN score of `1`.
+sunglasses: 1
+
+% Not in AFINN. Also very neutral (sleeping can be seen
+% as exempt from emotion). Thus, a neutral `0`.
+sleeping: 0
+
+% `dizzy` receives an AFINN score of `-1`.
+dizzy_face: -1
+
+% `astonished` receives an AFINN score of `2`.
+astonished: 2
+
+% `worried` receives an AFINN score of `-3`.
+worried: -3
+
+% `frowning` receives an AFINN score of `-1`.
+frowning: -1
+
+% `anguished` receives an AFINN score of `-3`.
+anguished: -3
+
+% Although `smiling`, because it's an `imp` it depicts
+% a rather evil smile. Gemoji tags it as `evil`, which
+% receives an AFINN score of `-3`.
+% Its often similar looking `imp` receives a `-4` due to
+% its exaggerated evilness.
+smiling_imp: -3
+imp: -4
+
+% `open_mouth`, used to denote `shock`[2]. The latter
+% receiving an AFINN score of `-2`.
+open_mouth: -2
+
+% `grimacing`, used to denote a `mistake`[2] or other
+% `unfavourable` situations. `mistake` receives an AFINN
+% score of `-2`.
+grimacing: -2
+
+% No emotion, thus `0`.
+neutral_face: 0
+
+% `confused` receives an AFINN score of `-2`.
+confused: -2
+
+% Slightly `shock`ed (which receives `-2`). Thus, `-1`.
+hushed: -1
+
+% No emotion, thus `0`.
+no_mouth: 0
+
+% `open_mouth`, used to denote a `good` person[2]. The
+% latter receiving an AFINN score of `3`.
+innocent: 3
+
+% Not in AFINN, but as it often denotes smugness and
+% finding someone else `sexy` (`3`), I gave it a `2`.
+smirk: 2
+
+% No emotion, thus `0`.
+expressionless: 0
+
+% Basically like `joy`, but even more enthusiastically.
+rofl: 4
+
+% `slightly_smiling_face`, a little less happy than `smile`.
+slightly_smiling_face: 1
+
+% `upside_down_face`: I have no clue... Sure it’s smiling... But...
+upside_down_face: 0
+
+% `money_mouth_face`: ???
+money_mouth_face: 0
+
+% `hugs` receives an AFINN score of `2`.
+hugs: 2
+
+% thesaurus.com gives `fool`, `weirdo` as synonyms, which both have an AFINN
+% rating of `-2`. However, this looks quite happy & cute, so I’ll be less
+% harsh.
+nerd_face: -1
+
+% Quite scary to some people (`fool: -2`), ok for others (comedy, comic: 1),
+% so I’ll keep it at `0` (neutral).
+clown_face: 0
+
+% Funky, this doesn’t indicate any valence in the Unicode spec, but all
+% vendors seem to put the cowboy hat on `smiley` (which gets a `+2`).
+cowboy_hat_face: 2
+
+% As `frowning` gets a `-1` (and I’m not going to add `-0.5`), I’ll give this
+% `-1` too. Sure, there’s a difference, but unless both Emoji appear next to
+% each other, that difference is subtile.
+slightly_frowning_face: -1
+frowning_face: -2
+
+% No AFINN matches for this, but it gets confusing appearances across vendors:
+% some are very positive, but some are quite fearful.
+drooling_face: 0
+
+% Quite negative & unamused, but less negative than `unamused`.
+roll_eyes: -1
+
+% Although thinking in general is positive (`engrossing: 3`, `engrossed: 1`)
+% this emoji is depicted more as “doubting”, and used when something is
+% “doubted” (`-1`).
+thinking: -1
+
+% Closest to “lied” (`-2`).
+lying_face: -2
+
+% Closest to `silencing` (`-1`)
+zipper_mouth_face: -1
+
+% Closest to `sick` (`-2`)
+nauseated_face: -2
+face_with_head_bandage: -2 % (`hurt`: `-2`)
+sneezing_face: -2 % Closest to `sneezing` (`-2`)
+face_with_thermometer: -1
+
+%%%%%
+%%%%% Cat faces:
+%%%%%
+%%%%% They each receive the same scores as their
+%%%%% human counterparts.
+%%%%%
+
+smiley_cat: 2
+smile_cat: 2
+heart_eyes_cat: 3
+kissing_cat: 2
+smirk_cat: 2
+scream_cat: -3
+crying_cat_face: -2
+joy_cat: 3
+pouting_cat: -4
+
+%%%%%
+%%%%% Non faces:
+%%%%%
+
+% Basically used as a nice way to say “shit” (`-4`) without actually saying
+% it, so it’s a bit softer.
+shit: -3
+
+% `ghost` (`-1`)
+ghost: -1
+
+% Skull isn’t listed, but the Gemoji tags dead (`-3`), danger (`-2`),
+% and poison (`-2`) are.
+skull: -2
+skull_and_crossbones: -2
+
+% Its Gemoji tag hooray isn’t listed, but some synonyms are: hurrah (`5`),
+% wow (`4`)
+raised_hands: 4
+
+% Clap isn’t listed, but the Gemoji tags praise (`3`) and applause (`2`) are.
+clap: 3
+
+% Pray (`1`), tags: please (`1`), hope (`2`), wish (`1`).
+pray: 1
+
+% Handshake isn’t listed. Tags: deal, not listed. Synonym: agree (`1`),
+% agreement (`1`).
+handshake: 1
+
+% Thumbs up isn’t listed, +1 isn’t listed. Tags: approved (`2`).
+thumbsup: 2
+
+% Thumbs down isn’t listed, -1 isn’t listed. Tags: disapprove (`-2`).
+thumbsdown: -2
+
+% Punch isn’t listed. Tags: attack (`-1`).
+punch: -1
+
+% Fist isn’t listed
+
+% crossed_fingers isn’t listed. Tags: luck (`3`), hopeful (`2`).
+crossed_fingers: 2
+
+% V isn’t listed. Tags: peace (`2`), victory (`3`).
+v: 2
+
+% Metal isn’t listed
+
+% OK isn’t listed. No tags. Synonyms: cool (`1`), fair (`2`).
+ok_hand: 2
+
+% Pointing finger left, up, right, down aren’t really sentimental.
+
+% middle_finger isn’t listed, fu isn’t listed. No tags. Synonyms: fuck (`-4`).
+fu: -4
+
+% Kiss is `2`.
+kiss: 2
+
+% Lips isn’t listed. Tags: kiss (`2`).
+lips: 2
+
+% Love is `3`.
+heart: 3
+yellow_heart: 3
+green_heart: 3
+blue_heart: 3
+purple_heart: 3
+black_heart: 3
+two_hearts: 3
+revolving_hearts: 3
+heartbeat: 3
+heartpulse: 3
+sparkling_heart: 3
+cupid: 3
+gift_heart: 3
+
+% Heartbroken is `-3`.
+broken_heart: -3
+
+% 100 isn’t listed. Tags: perfect (`3`).
+100: 3
