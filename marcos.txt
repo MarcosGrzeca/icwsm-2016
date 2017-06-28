@@ -1,0 +1,5 @@
+- Converter hiperlink para #url
+- Converter mentions #mntion
+- Emoticons para aspectos positivos ou negativos
+- Hashtags diferentes aspectos
+- Truncate em palabras que algum caracter aparecia mais de duas vezes consecutivamente: druuuuuuuuuuuuunk -> druunk

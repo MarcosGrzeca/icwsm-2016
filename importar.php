@@ -1,6 +1,10 @@
 <?
 require_once("config.php");
 
+$res = getTweetById("509197123100110850");
+debug($res);
+die;
+
 $tweets = query("SELECT * FROM tweets WHERE situacao = 'P' LIMIT 500");
 
 foreach (getRows($tweets) as $key => $value) {

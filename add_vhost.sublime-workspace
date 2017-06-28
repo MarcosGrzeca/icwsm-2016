@@ -1,0 +1,551 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Co",
+				"Connection"
+			],
+			[
+				"la",
+				"labels_train"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 196.0,
+		"last_filter": "projec",
+		"selected_items":
+		[
+			[
+				"projec",
+				"Project: Close"
+			],
+			[
+				"side",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"opeb",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"sideba",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"si",
+				"View: Toggle Side Bar"
+			],
+			[
+				"refre",
+				"Project: Refresh Folders"
+			],
+			[
+				"refr",
+				"Project: Refresh Folders"
+			],
+			[
+				"wt",
+				"Word Wrap: Toggle"
+			],
+			[
+				"wra",
+				"Word Wrap: Toggle"
+			],
+			[
+				"add",
+				"Project: Add Folder"
+			],
+			[
+				"clos",
+				"Project: Close"
+			],
+			[
+				"JSON",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"iden",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"prett",
+				"Preferences: Pretty JSON Settings - Default"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ss j",
+				"Set Syntax: JSON"
+			],
+			[
+				"ref",
+				"Project: Refresh Folders"
+			],
+			[
+				"du",
+				"File: Duplicate"
+			],
+			[
+				"mo",
+				"File: Move"
+			],
+			[
+				"re",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"m",
+				"File: Move"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"json ",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"inde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ss json",
+				"Set Syntax: JSON"
+			],
+			[
+				"json",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"ss jo",
+				"Set Syntax: JSON"
+			],
+			[
+				"proj",
+				"Project: Save As"
+			],
+			[
+				"close",
+				"Project: Close"
+			],
+			[
+				"ss jso",
+				"Set Syntax: JSON"
+			],
+			[
+				"js",
+				"Pretty JSON: Validate"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ss p",
+				"Set Syntax: PHP"
+			],
+			[
+				"clo",
+				"Project: Close"
+			],
+			[
+				"pro",
+				"Project: Save As"
+			],
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"painst",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Install Package Control"
+			]
+		],
+		"width": 432.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Marcos/Documents/GitHub/R-testes/alemao/alemao_bag.csv",
+		"/C/wamp64/www/ALC-Classification/CSV.java",
+		"/C/wamp64/www/ALC-Classification/marcos.txt",
+		"/C/wamp64/www/ALC-Classification/Classification.pl",
+		"/C/wamp64/www/ALC-Classification/Feature Extraction/feature_extraction_tool/README.txt",
+		"/C/wamp64/www/icwsm-2016/.gitignore",
+		"/C/Users/Marcos/AppData/Roaming/Sublime Text 3/Packages/Pretty JSON/Pretty JSON.sublime-settings",
+		"/C/wamp64/www/icwsm-2016/.git/.gitignore",
+		"/C/wamp64/www/icwsm-2016/twitter-api-php/vendor/doctrine/instantiator/.gitignore",
+		"/C/wamp64/www/icwsm-2016/conversa.sql",
+		"/C/wamp64/www/icwsm-2016/functions/functions.php",
+		"/C/wamp64/www/icwsm-2016/alemao.php",
+		"/C/wamp64/www/icwsm-2016/ALC/ses1059/PaxHeaders.26413/0581059001_h_00_annot.json,2",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses2080/0952080001_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses2080/0952080001_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses2080/0952080001_h_00.par",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses2080/0952080001_h_00.TextGrid",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006027_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006027_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006027_h_00.par",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006027_h_00.TextGrid",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006030_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006030_h_00.par",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006030_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006030_h_00.TextGrid",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/DOC/SPEECHRECORDER/ALC_a_script.txt",
+		"/C/wamp64/www/icwsm-2016/ALC/ses1006/0061006030_m_00_annot.json",
+		"/C/wamp64/www/icwsm-2016/ALC/ses1006/PaxHeaders.26413/0061006030_m_00_annot.json",
+		"/C/wamp64/www/icwsm-2016/ALC/ses1006/PaxHeaders.26413/0061006030_h_00.TextGrid",
+		"/C/wamp64/www/icwsm-2016/ALC/ses1006/0061006030_h_00.TextGrid",
+		"/C/wamp64/www/icwsm-2016/ALC/ses1006/PaxHeaders.26413/0061006030_h_00.par",
+		"/C/wamp64/www/icwsm-2016/ALC/ses1006/0061006030_h_00.par",
+		"/C/wamp64/www/icwsm-2016/ALC/ses1006/0061006001_h_00_annot.json",
+		"/C/wamp64/www/icwsm-2016/ALC/ses1006/0061006001_m_00_annot.json",
+		"/C/wamp64/www/icwsm-2016/functions/Connection.php",
+		"/C/wamp64/www/icwsm-2016/config.php",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ALC_DBconfig.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1007/0071007001_h_00.par",
+		"/C/wamp64/www/icwsm-2016/alemao.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1007/0071007001_h_00.TextGrid",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/PaxHeaders.26413/ALC_DBconfig.json,2",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/README",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/TABLE/SESSEXT.TBL",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006006_h_00.par",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006014_h_00.par",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1007/0071007001_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006022_h_00.TextGrid",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006025_h_00.TextGrid",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006001_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006022_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006003_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006002_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006005_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006004_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006026_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006028_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006029_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006009_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006006_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006010_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006012_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006011_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006013_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006014_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006016_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006015_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006017_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006018_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006019_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006020_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006021_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006023_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006022_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006024_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006001_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006025_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006002_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006003_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006004_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006006_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006005_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006007_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006008_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006023_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006024_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006026_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006025_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006028_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006029_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006007_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006008_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006009_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006010_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006012_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006013_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006014_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006011_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006016_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006017_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006015_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006018_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006020_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006019_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/0061006021_h_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1006/PaxHeaders.26413/0061006026_m_00_annot.json",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/TABLE/CONTENTS.TBL",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/DOC/IS2011CHALLENGE/create_lists",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1007/PaxHeaders.26413/0071007001_h_00.TextGrid",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/ses1007/PaxHeaders.26413/0071007001_h_00.par",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/ALC/DOC/SPEECHRECORDER/ALC_na_script.txt",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/CLARINDocu/TABLE/SESSEXT.TBL",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/CLARINDocu/README",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/CLARINDocu/TABLE/LEXICON.TBL",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/CLARINDocu/TABLE/ITEMMAP.TBL",
+		"/C/Users/Marcos/Downloads/Bases de dados/Alemao/CLARINDocu/TABLE/CONTENTS.TBL",
+		"/C/wamp64/www/icwsm-2016/tweets (1).sql",
+		"/C/wamp64/www/icwsm-2016/tweets.sql",
+		"/C/Users/Marcos/Downloads/Bases de dados/icwsm-2016-data-release/alcohol-labeled-tweets-icwsm-2016-Q3.tsv",
+		"/C/Users/Marcos/Downloads/Bases de dados/icwsm-2016-data-release/alcohol-labeled-tweets-icwsm-2016-Q2.tsv",
+		"/C/Users/Marcos/Downloads/Bases de dados/icwsm-2016-data-release/alcohol-labeled-tweets-icwsm-2016-Q1.tsv",
+		"/C/wamp64/www/icwsm-2016/importar.php",
+		"/C/wamp64/www/icwsm-2016/twitter-api-php/index.php",
+		"/C/wamp64/www/icwsm-2016/twitter-api-php/TwitterAPIExchange.php",
+		"/C/wamp64/www/icwsm-2016/fileToBd.php",
+		"/C/wamp64/www/icwsm-2016/tweets/alcohol-labeled-tweets-icwsm-2016-Q1.tsv",
+		"/C/wamp64/www/icwsm-2016/index.php",
+		"/C/wamp64/www/twitter-api-php/index.php",
+		"/C/Users/Marcos/Downloads/Bases de dados/icwsm-2016-data-release/alcohol-keywords.py"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"",
+			"*.json",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			",",
+			"alc",
+			" \"",
+			" ",
+			" \"",
+			"\"No\" ",
+			"\n",
+			"eue",
+			", ",
+			"\n",
+			")",
+			"!",
+			"'",
+			"!",
+			"\",",
+			"\"",
+			"cna",
+			"movie_review",
+			"DP.csv",
+			"-",
+			"debug",
+			"h_00_annot.json",
+			"'",
+			"ile",
+			"\"",
+			"type",
+			"(",
+			"461723284162502656",
+			"470439108461215744",
+			"470049140425359360",
+			"469894228793761792",
+			"469890725497167872",
+			"\t",
+			"`tweet`SET",
+			"469945926522785792",
+			"\t",
+			"$db",
+			"$this->conn",
+			"$mysqli",
+			"471504684835151872",
+			"471505729749532672",
+			"\t",
+			"471045029600190464",
+			"462681889506361344",
+			"-",
+			"tetaplinha",
+			".2",
+			"tetap2",
+			"tetap1",
+			"tetapduaslinhas",
+			"tetaplinha",
+			"1",
+			"2",
+			">>> ",
+			"D43",
+			"d43"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "add_vhost.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				".giti",
+				"twitter-api-php\\vendor\\doctrine\\instantiator\\.gitignore"
+			],
+			[
+				"0952080001_h_00_annot.json",
+				"ALC\\ses1059\\PaxHeaders.26413\\0581059001_h_00_annot.json,2"
+			],
+			[
+				"functio",
+				"functions\\functions.php"
+			],
+			[
+				"alem",
+				"alemao.json"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 81.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 316.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

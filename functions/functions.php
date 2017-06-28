@@ -57,6 +57,10 @@ function getNumRows($result) {
     return $result->num_rows;
 }
 
-function debug($param) {
-    ChromePhp::log($param);
+function debug($param, $tipo = "") {
+    if ($tipo == "I") {
+        ChromePhp::info($param);
+    } else {
+        ChromePhp::log($param);
+    }
 }

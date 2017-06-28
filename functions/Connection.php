@@ -14,7 +14,11 @@ class Connection {
 	}
 
 	private static function connect() {
-		self::$conn = new mysqli("localhost", "root", "", self::$bd);
+		if (self::$bd == "rds") {
+			self::$conn = new mysqli("alemao.ckfgeb2fkvqp.sa-east-1.rds.amazonaws.com:3306", "root", "alemao10", "alemao");
+		} else {
+			self::$conn = new mysqli("localhost", "root", "", self::$bd);
+		}
 
 	    /* check connection */
 	    if (self::$conn->connect_errno) {
@@ -26,6 +30,12 @@ class Connection {
 	        printf("Error loading character set utf8: %s\n", $mysqli->error);
 	        exit();
 	    }
+
+		self::$conn->set_charset("utf8mb4");
+	    
+	    //self::$conn->query("SET character_set_client='utf8'");
+		//self::$conn->query("SET character_set_results='utf8'");
+		//self::$conn->query("set collation_connection='utf8_general_ci'");
 	}
 
 	public static function get() {
