@@ -1,37 +1,40 @@
 <?
 require_once("config.php");
 
-$res = getTweetById("509197123100110850");
-debug($res);
-die;
+$tweets = query("SELECT * FROM tweets_completo WHERE situacao = 'E'");
 
-$tweets = query("SELECT * FROM tweets WHERE situacao = 'P' LIMIT 500");
-
+$ind = 0;
 foreach (getRows($tweets) as $key => $value) {
 	try {
-		echo $value["id"] . "<br/>";
 		$res = getTweetById($value["id"]);
 		$resultado = json_decode($res);
 		if (isset($resultado->errors)) {
 			$situacao = "E";
 			foreach ($resultado->errors as $key => $erro) {
 				if ($erro->code == "88") {
-					echo "EXCEDEU LIMITEs";
-					break 2;
+					echo "EXCEDEU LIMITEs " . $ind;
+					//break 2;
+					sleep(300);
 				}
 			}
 		} else {
-			$situacao = "S";	
+			echo $value["id"] . "<br/>";
+			echo $res;
+			debug($resultado);
+			$situacao = "N";
+
+			$update = "UPDATE `tweets_completo` SET situacao = '" . $situacao . "', texto = '" . mysqli_real_escape_string(Connection::get(), $res) . "' WHERE id = "  . $value["id"];
+			query($update);
 		}
 
-		$update = "UPDATE `tweets` SET situacao = '" . $situacao . "', texto = '" . mysqli_real_escape_string(Connection::get(), $res) . "' WHERE id = "  . $value["id"];
-		query($update);
+		/*$update = "UPDATE `tweets` SET situacao = '" . $situacao . "', texto = '" . mysqli_real_escape_string(Connection::get(), $res) . "' WHERE id = "  . $value["id"];
+		query($update);*/
 	} catch (Exception $e) {
 		debug("ERRO");
 		debug($e->getMessage());		
 	}
+	$ind++;
 }
-
 echo "FIM";
 
 ?>

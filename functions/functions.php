@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', 1);
-require_once('twitter-api-php/TwitterAPIExchange.php');
+require_once(dirname(__FILE__) . '/../twitter-api-php/TwitterAPIExchange.php');
 
 function getSettings() {
     return array(

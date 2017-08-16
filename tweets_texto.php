@@ -13,20 +13,16 @@ die;*/
 - Truncate em palabras que algum caracter aparecia mais de duas vezes consecutivamente: druuuuuuuuuuuuunk -> druunk
 */
 
-$tweets = query("SELECT * FROM tweets WHERE situacao = 'S' AND textoParserEmoticom IS NOT NULL LIMIT 100");
+$tweets = query("SELECT * FROM tweets WHERE situacao = 'N'");
 
 foreach (getRows($tweets) as $key => $value) {
 	try {
-		$tweet = json_decode($value["texto"]);
-		//$texto = $tweet->text;
-
-        $texto = $value["textoParserEmoticom"];
-        debug("-------------------------------");
-		debug($texto, "I");
-		
+        $tweet = json_decode($value["texto"]);
+        $textoFull = $tweet->text;
+		$texto = $tweet->text;
 		$hashTags = array();
 
-		if ($tweet->entities->hashtags) {
+		if (isset($tweet->entities->hashtags)) {
 			foreach ($tweet->entities->hashtags as $key => $hashTag) {
 				$hashTags[] = "#" . $hashTag->text;
 			}
@@ -35,7 +31,7 @@ foreach (getRows($tweets) as $key => $value) {
 			}
 		}
 
-		if ($tweet->entities->user_mentions) {
+		if (isset($tweet->entities->user_mentions)) {
 			$users = array();
 			foreach ($tweet->entities->user_mentions as $key => $user) {
 				$users[] = "@" . $user->screen_name;
@@ -45,7 +41,7 @@ foreach (getRows($tweets) as $key => $value) {
 			}
 		}
 
-		if ($tweet->entities->urls) {
+		if (isset($tweet->entities->urls)) {
 			$urls = array();
 			foreach ($tweet->entities->urls as $key => $url) {
 				$urls[] = $url->url;
@@ -55,16 +51,26 @@ foreach (getRows($tweets) as $key => $value) {
 			}
 		}
 
+        if (isset($tweet->entities->media)) {
+            $media = array();
+            foreach ($tweet->entities->media as $key => $url) {
+                $media[] = $url->url;
+            }
+            if ($media) {
+                $texto = str_replace($media, "#media", $texto);
+            }
+        }
+
         $texto = removeEmoji($texto);
         
         //Remover drunnnnnnnnnnnnnnnnnnnnk
         while (preg_match('/(.)\\1{2}/', $texto)) {
             $texto = preg_replace('/(.)\\1{2}/', '$1$1', $texto);
         }
-
-		//$update = "UPDATE `tweets` SET textoParserEmoticom = '" . mysqli_real_escape_string(Connection::get(), $texto) . "', hashtags = '" . implode(" ", $hashTags) . "' WHERE id = "  . $value["id"];
-        /*$update = "UPDATE `tweets` SET textParser = '" . mysqli_real_escape_string(Connection::get(), $texto) . "' WHERE id = "  . $value["id"];
-		query($update);*/
+		$update = "UPDATE `tweets` SET textoParserEmoticom = '" . mysqli_real_escape_string(Connection::get(), $textoFull) . "', hashtags = '" . implode(" ", $hashTags) . "' WHERE id = "  . $value["id"];
+        query($update);
+        $update = "UPDATE `tweets` SET textParser = '" . mysqli_real_escape_string(Connection::get(), $texto) . "' WHERE id = "  . $value["id"];
+		query($update);
 	} catch (Exception $e) {
 		debug("ERRO");
 		debug($e->getMessage());		

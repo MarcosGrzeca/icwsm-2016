@@ -1,0 +1,9 @@
+Accuracy
+                                                       Min.   1st Qu.    Median      Mean 	3rd Qu.      Max.	 NA's
+3-GRAM, #, Emoticon, CV                           0.6693419 0.6749599 0.6805778 0.6811129 0.6869984 0.6934189    0
+BoW, #, Emoticon, CV                              0.8491172 0.8531300 0.8571429 0.8566078 0.8603531 0.8635634    0
+BoW, #, Emoticon, Sentiment, Sentiment #, CV      0.8491172 0.8531300 0.8571429 0.8560728 0.8595506 0.8619583    0
+BoW, #, Emoticon, Sentiment, Sentiment #, NLP, CV 0.8459069 0.8507223 0.8555377 0.8544676 0.8587480 0.8619583    0
+3-GRAM, #, Emoticon, Stemming, CV                 0.6693419 0.6749599 0.6805778 0.6811129 0.6869984 0.6934189    0
+BoW, #, Emoticon, Sentiment, Sentiment #, NLP     0.8573265 0.8593436 0.8613607 0.8639214 0.8672188 0.8730769    0
+
