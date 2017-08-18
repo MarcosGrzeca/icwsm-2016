@@ -14,7 +14,7 @@ foreach (getRows($tweets) as $key => $value) {
 		query($update);
 	} catch (Exception $e) {
 		debug("ERRO");
-		debug($e->getMessage());		
+		debug($e->getMessage());
 	}
 
 }
