@@ -9,13 +9,29 @@ $fb = new Facebook\Facebook([
 	'default_graph_version' => 'v2.2',
 	]);
 
+//Minha
+//EAAbVrfk9Y44BAIpGucHVn5BqrVKJMJfUTudcoN0FX5OXJMa1fMmRBlE3qm9lqeXIFX37Rv3gOZAOhoQIKopNz7zuXO1TPEYded6Qf51htqpwdFejZB33w4WK92tuZCvXMHVjF7IlmjUmrgYJeASs41MWkfC4IKb0VXlfMXZCagZDZD
+
+//Canabis
+//EAAbVrfk9Y44BAPen13bjn6TMf8jZBRio4aRZCVra62asuQ9kVWAToPcyUmnYqwB9I3ChpLcejTztHxSPxzh81zZB0wA2rVOWD1AVIFvyTB457uIZAUgZA0ZA8UkZAPMpC70z0WRZAzQthdHfP54jxqIArFhZC7u091GL9ZBcP3fEP3RQZDZD
+
+//Nikolas
+//EAAbVrfk9Y44BAC0HZCGbTUFprrjdS7v44Bie6uF8E5tlUtVWGxQuW2YYZCqZCAXoXO9fWDc4tcoq8iro0h4Xz5im2oA1RbP0Skp02VVlHFTsPyexXDu8ZAIeoq79ireqwQ8qboaZC5pGAF7l4eetJngkxjdfdqBl5d9xq6PZCz8AZDZD
+
+//MO
+//EAAbVrfk9Y44BAH6m7WFvWkt34ZC1RbI9iQEpaXGW9UUnZCCuWBU8WISEZAUGREOzw2MgQChMaQR9kGtjZA6WB5uo1d3DI9Ruqcwl3TkYJyz856sja6RKQlHJKoYDPKsJqWrmC33urg4FUlIj1HWCvCA4iV6kiGknNoZCYnxLqlgZDZD
+
+
+//Magdiel
+//EAAbVrfk9Y44BANw3APWHqBDw3ZBGpseAr0dvdrG3bPIklSXdBoeH59u83KppILEfSjZCWs5gT9rJZBGsYii3LxSE2xptXitSnZBl57qSfVfgbZCXwZBbI6ZAhy0ij1My9xpHMvpsjf1MFLuTWnQcQhDS5LLvojciHJMapoJlEWHRwZDZD
+
 
 foreach (getRows($tweets) as $key => $value) {
 	try {
 		$tweet = json_decode($value["texto"]);
 		if (isset($tweet->geo->coordinates)) {
 			try {
-				$response = $fb->get('search?type=place&center=' . $tweet->geo->coordinates[0] . ', ' . $tweet->geo->coordinates[1] . '&fields=name,about,category_list,description,hours,location&distance=500', 'EAAbVrfk9Y44BAIpGucHVn5BqrVKJMJfUTudcoN0FX5OXJMa1fMmRBlE3qm9lqeXIFX37Rv3gOZAOhoQIKopNz7zuXO1TPEYded6Qf51htqpwdFejZB33w4WK92tuZCvXMHVjF7IlmjUmrgYJeASs41MWkfC4IKb0VXlfMXZCagZDZD');
+				$response = $fb->get('search?type=place&center=' . $tweet->geo->coordinates[0] . ', ' . $tweet->geo->coordinates[1] . '&fields=name,about,category_list,description,hours,location&distance=500', 'EAAbVrfk9Y44BAH6m7WFvWkt34ZC1RbI9iQEpaXGW9UUnZCCuWBU8WISEZAUGREOzw2MgQChMaQR9kGtjZA6WB5uo1d3DI9Ruqcwl3TkYJyz856sja6RKQlHJKoYDPKsJqWrmC33urg4FUlIj1HWCvCA4iV6kiGknNoZCYnxLqlgZDZD');
 			} catch(Facebook\Exceptions\FacebookResponseException $e) {
 				echo 'Graph returned an error: ' . $e->getMessage();
 				throw $e;

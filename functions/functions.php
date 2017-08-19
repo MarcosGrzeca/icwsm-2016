@@ -64,3 +64,7 @@ function debug($param, $tipo = "") {
         ChromePhp::log($param);
     }
 }
+
+function escape($palavra) {
+    return mysqli_real_escape_string(Connection::get(), $palavra);
+}
