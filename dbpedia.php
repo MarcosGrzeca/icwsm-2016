@@ -10,8 +10,13 @@
 require_once("config.php");
 
 $i = 0;
-while ($i < 5000) {
-	$tweets = query("SELECT * FROM tweets_nlp WHERE tipo = 'E' AND NOT EXISTS (SELECT * FROM conceito WHERE conceito.palavra = tweets_nlp.palavra) LIMIT 1");
+while ($i < 2000) {
+	$tweets = query("SELECT * FROM tweets_nlp WHERE tipo = 'E' AND origem = 'C' AND NOT EXISTS (SELECT * FROM conceito WHERE conceito.palavra = tweets_nlp.palavra) LIMIT 1");
+
+	if (getNumRows($tweets) == 0) {
+		echo "Nao tem registros";
+		break;
+	}
 	foreach (getRows($tweets) as $key => $value) {
 		try {
 			$curl = curl_init();
@@ -25,7 +30,7 @@ while ($i < 5000) {
 				CURLOPT_SSL_VERIFYPEER => 0,
 				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 				CURLOPT_CUSTOMREQUEST => "POST",
-				CURLOPT_POSTFIELDS => "text=" . $value["palavra"] . "&confidence=0.25",
+				CURLOPT_POSTFIELDS => "text=" . $value["palavra"] . "&confidence=0.35",
 				CURLOPT_HTTPHEADER => array(
 					"accept: application/json",
 					"cache-control: no-cache",
@@ -62,5 +67,4 @@ while ($i < 5000) {
 	$i++;
 }
 echo "FIM";
-
 ?>
