@@ -1,24 +1,23 @@
 PHP
 - http://localhost/icwsm-2016/tweets_texto.php
 - http://localhost/icwsm-2016/sentimento.php
-
-- http://localhost/icwsm-2016/nlp.php
-
 - http://localhost/icwsm-2016/extrair_data.php
-- http://localhost/icwsm-2016/extrair_localizacao.php
 - http://localhost/icwsm-2016/facebook.php
+- http://localhost/icwsm-2016/extrair_localizacao.php
 
 - http://localhost/icwsm-2016/calais.php
 - http://localhost/icwsm-2016/calais_entities.php
 
-- http://localhost/icwsm-2016/dpedia.php
-
-- sqls_capeta.sql
-- Script para numero de erros
-
-
-R
-- processadores/sentimento.R
+- processadores/sentiment.R
 - processadores/nlp.R
+
 - processadores/pos.R
+- http://localhost/icwsm-2016/pos.php
+- sqls_capeta.sql
+
+
+- Script para numero de erros
 - processadores/spelling.R
+
+- Falta palavroes
+- http://localhost/icwsm-2016/dpedia.php

@@ -1,7 +1,7 @@
 <?
 require_once("config.php");
 $wordsAr = array();
-$tweets = query("SELECT * FROM tweets WHERE nlp IS NOT NULL");
+$tweets = query("SELECT * FROM tweets WHERE situacao = 'N' AND nlp IS NOT NULL AND id NOT IN (SELECT idTweet FROM tweets_anotacoes WHERE tweets_anotacoes.idTweet = tweets.id)");
 
 $i = 0;
 $sqls = "";

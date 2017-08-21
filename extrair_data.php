@@ -1,7 +1,7 @@
 <?
 require_once("config.php");
 
-$tweets = query("SELECT * FROM tweets");
+$tweets = query("SELECT * FROM tweets WHERE data IS NULL");
 
 foreach (getRows($tweets) as $key => $value) {
 	try {

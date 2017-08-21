@@ -1,4 +1,11 @@
 UPDATE `tweets` t
+SET numeroConjuncoes = (IFNULL(
+                                  (SELECT count(ta.id)
+                                   FROM tweets_anotacoes ta
+                                   WHERE ta.idTweet = t.id
+                                   AND pos IN ("CC") ), 0));
+
+UPDATE `tweets` t
 SET taxaSubstantivo = (IFNULL(
                                   (SELECT count(ta.id)
                                    FROM tweets_anotacoes ta
@@ -27,7 +34,7 @@ SET taxaAdjetivo = (IFNULL(
                                                                                    (SELECT count(ta.id)
                                                                                     FROM tweets_anotacoes ta
                                                                                     WHERE ta.idTweet = t.id
-                                                                                        AND pos IN ("CC", "CD", "DT", "EX", "FW", "IN", "JJ", "JJR", "JJS", "LS", "MD", "NN", "NNS", "NNP", "NNPS", "PDT", "POS", "PRP", "PRP", "RB", "RBR", "RBS", "RP", "SYM", "TO", "UH", "VB", "VBD", "VBG", "VBN", "VBP", "VBZ", "WDT", "WP", "WP", "WRB", "PRP$", "WP$", "#") ), 1))
+                                                                                        AND pos IN ("CC", "CD", "DT", "EX", "FW", "IN", "JJ", "JJR", "JJS", "LS", "MD", "NN", "NNS", "NNP", "NNPS", "PDT", "POS", "PRP", "PRP", "RB", "RBR", "RBS", "RP", "SYM", "TO", "UH", "VB", "VBD", "VBG", "VBN", "VBP", "VBZ", "WDT", "WP", "WP", "WRB", "PRP$", "WP$", "#") ), 1));
 UPDATE `tweets` t
 SET taxaAdverbio = (IFNULL(
                                (SELECT count(ta.id)
@@ -57,4 +64,4 @@ SET taxaVerbo = (IFNULL(
                                                                                    (SELECT count(ta.id)
                                                                                     FROM tweets_anotacoes ta
                                                                                     WHERE ta.idTweet = t.id
-                                                                                        AND pos IN ("CC", "CD", "DT", "EX", "FW", "IN", "JJ", "JJR", "JJS", "LS", "MD", "NN", "NNS", "NNP", "NNPS", "PDT", "POS", "PRP", "PRP", "RB", "RBR", "RBS", "RP", "SYM", "TO", "UH", "VB", "VBD", "VBG", "VBN", "VBP", "VBZ", "WDT", "WP", "WP", "WRB", "PRP$", "WP$", "#") ), 1))
+                                                                                        AND pos IN ("CC", "CD", "DT", "EX", "FW", "IN", "JJ", "JJR", "JJS", "LS", "MD", "NN", "NNS", "NNP", "NNPS", "PDT", "POS", "PRP", "PRP", "RB", "RBR", "RBS", "RP", "SYM", "TO", "UH", "VB", "VBD", "VBG", "VBN", "VBP", "VBZ", "WDT", "WP", "WP", "WRB", "PRP$", "WP$", "#") ), 1));
