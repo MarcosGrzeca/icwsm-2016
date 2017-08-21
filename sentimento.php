@@ -14,7 +14,7 @@ https://github.com/wooorm/emoji-emotion
 
 //$tweets = query("SELECT * FROM tweets WHERE situacao = 'S' AND textoParserEmoticom IS NOT NULL LIMIT 1000");
 
-$tweets = query("SELECT * FROM tweets WHERE situacao = 'S' AND textoParserEmoticom IS NOT NULL");
+$tweets = query("SELECT * FROM tweets WHERE situacao = 'N' AND textoParserEmoticom IS NOT NULL");
 
 foreach (getRows($tweets) as $key => $value) {
     //462060724811206656
