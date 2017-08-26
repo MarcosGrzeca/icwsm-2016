@@ -1,0 +1,71 @@
+++++++++++++++++++ Exemplo 1 +++++++++++++++++++++++++++
+
+Retorna todos os types da entidade Didier Drogba (http://dbpedia.org/page/Didier_Drogba)
+
+PREFIX dbres: <http://dbpedia.org/resource/>
+PREFIX  rdfs:   <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?type ?x  WHERE
+  { 
+    dbres:Didier_Drogba rdf:type ?type.
+   ?x  rdfs:subClassOf  ?type
+
+  } LIMIT 100
+
+++++++++++++++++++ Exemplo 2 +++++++++++++++++++++++++++
+
+Retorna o type e o número de subclasses (ou número de vezes que ele é uma superclasse de alguém)
+
+PREFIX dbres: <http://dbpedia.org/resource/>
+PREFIX  rdfs:   <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?type (COUNT(?x) as ?valueSum) WHERE
+  { 
+    dbres:Didier_Drogba rdf:type ?type.
+   ?x  rdfs:subClassOf  ?type
+
+  } LIMIT 100
+
+
+
+Retorna apenas a contagem de quem tem subclasses (ou é uma superclasse) – isso não funciona no RapidMiner, então Temos que usar isso para contar;
+*Entities_Concept_1_type* são os types e as subclasses encontradas no código anterior
+
+
+SELECT (COUNT(?x) AS ?value) WHERE
+  { 
+ 
+    ?x rdfs:subClassOf *Entities_Concept_1_type*
+
+  }
+
+++++++++++++++++++ Exemplo 3 +++++++++++++++++++++++++++
+
+Coletar a URL da página na Wikipedia que derivou tal entidade
+
+PREFIX dbres: <http://dbpedia.org/resource/>
+
+SELECT ?type WHERE
+  { 
+    dbres:Adam prov:wasDerivedFrom ?type.
+   
+
+  } LIMIT 100
+
+Sparql como fica no rapidminer
+
+PREFIX dbres: <http://dbpedia.org/resource/>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?type ?x  WHERE
+  { 
+    *Entities_Concept_1* rdf:type ?type.
+    ?type rdfs:subClassOf ?x 
+
+  } 
+
+
+

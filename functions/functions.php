@@ -34,7 +34,7 @@ function read_file($local_file) {
     return $linhas;
 }
 
-function query($sql) {
+function query($sql, $die = true) {
     try {
         $mys = Connection::get()->query($sql);
         if ($mys) {
@@ -43,9 +43,14 @@ function query($sql) {
             throw new Exception(Connection::get()->error, 1);
         }
     } catch (Exception $e) {
-        debug("CATCH");
-        debug($sql);
-        die($e->getMessage());
+        if ($die) {
+            debug("CATCH");
+            debug($sql);
+            die($e->getMessage());
+        } else {
+            throw $e;
+        }
+        
     }
 }
 

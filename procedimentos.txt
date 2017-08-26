@@ -15,9 +15,11 @@ PHP
 - http://localhost/icwsm-2016/pos.php
 - sqls_capeta.sql
 
-
 - Script para numero de erros
 - processadores/spelling.R
 
-- Falta palavroes
+- http://localhost/icwsm-2016/palavroes.php
+- http://localhost/icwsm-2016/gram_to_csv.php
+
 - http://localhost/icwsm-2016/dpedia.php
+- http://localhost/icwsm-2016/dbpedia_gram.php

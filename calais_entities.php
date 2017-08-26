@@ -4,9 +4,9 @@
 
 require_once("config.php");
 
-query("DELETE FROM tweets_nlp WHERE origem = 'C'");
+//query("DELETE FROM tweets_nlp WHERE origem = 'C'");
 
-$tweets = query("SELECT * FROM tweets WHERE calais IS NOT NULL AND idInterno NOT IN (SELECT idTweetInterno FROM tweets_nlp WHERE tweets_nlp.idTweetInterno = tweets.idInterno)");
+$tweets = query("SELECT * FROM tweets WHERE calais IS NOT NULL AND idInterno NOT IN (SELECT idTweetInterno FROM tweets_nlp WHERE tweets_nlp.idTweetInterno = tweets.idInterno AND tweets_nlp.origem = 'C')");
 
 debug(getNumRows($tweets));
 foreach (getRows($tweets) as $key => $value) {
