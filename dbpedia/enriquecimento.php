@@ -171,7 +171,13 @@ query("TRUNCATE TABLE type;");
 query("TRUNCATE TABLE resource_type;");
 query("TRUNCATE TABLE bridge;");*/
 
-$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NULL AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra)");
+$salvarBD = false;
+
+if ($salvarBD) {
+	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NULL AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra)");
+} else {
+	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra)");	
+}
 
 echo "<pre>";
 
@@ -188,12 +194,12 @@ foreach (getRows($tweets) as $key => $conceito) {
 	try {
 
 		$typesLocais = array();
-		//debug("Types");
 		$retorno = json_decode(getTypesResource($conceito["resource"]), true);
 
-		$sql = "UPDATE `conceito` SET resourceCompleto = '" . escape(json_encode($retorno)) . "' WHERE id = '" . $conceito["id"] . "';";
-		//debug($sql);
-		query($sql);
+		if ($salvarBD) {
+			$sql = "UPDATE `conceito` SET resourceCompleto = '" . escape(json_encode($retorno)) . "' WHERE id = '" . $conceito["id"] . "';";
+			query($sql);
+		}
 
 		foreach ($retorno["results"]["bindings"] as $keyType => $type) {
 			$typesLocais[] = $type["type"]["value"];
@@ -207,8 +213,10 @@ foreach (getRows($tweets) as $key => $conceito) {
 				if (!in_array($value["type"]["value"], $types[$value["x"]["value"]]["relacoes"])) {
 					$types[$value["x"]["value"]]["relacoes"][] = $value["type"]["value"];
 					try {
-						$sql = "INSERT INTO bridge VALUES ('" . escape($value["x"]["value"]) . "', '" . escape($value["type"]["value"]) . "');";
-						query($sql, false);
+						if ($salvarBD) {
+							$sql = "INSERT INTO bridge VALUES ('" . escape($value["x"]["value"]) . "', '" . escape($value["type"]["value"]) . "');";
+							query($sql, false);
+						}
 					} catch (Exception $e) {}
 					if (!isset($types[$value["type"]["value"]])) {
 						$types[$value["type"]["value"]] = array("value" => $value["type"]["value"], "count" => 0, "relacoes" => array());
@@ -223,22 +231,35 @@ foreach (getRows($tweets) as $key => $conceito) {
 		foreach ($retornoSum["results"]["bindings"] as $key => $value) {
 			$types[$value["type"]["value"]]["count"] = $value["valueSum"]["value"];
 			try {
-				$sql = "INSERT INTO `type` (type, sum) VALUES ('" . escape($value["type"]["value"]) . "', '" . escape($value["valueSum"]["value"]) . "');";
-				query($sql, false);
+				if ($salvarBD) {
+					$sql = "INSERT INTO `type` (type, sum) VALUES ('" . escape($value["type"]["value"]) . "', '" . escape($value["valueSum"]["value"]) . "');";
+					query($sql, false);
+				}
 			} catch (Exception $e) {}
 		}
 
 		foreach ($typesLocais as $keyCT => $valueCT) {
 			try {
-				$sql = "INSERT INTO `resource_type` (resource, type) VALUES ('" . escape($conceito["resource"]) . "', '" . escape($valueCT) . "');";
-				query($sql, false);
+				if ($salvarBD) {
+					$sql = "INSERT INTO `resource_type` (resource, type) VALUES ('" . escape($conceito["resource"]) . "', '" . escape($valueCT) . "');";
+					query($sql, false);
+				}
 			} catch (Exception $e) {}
 		}
-		var_export($typesLocais);
 	} catch (Exception $e) {
 
 	}
 }
 echo "Hora fim " . date("H:i:s") . "<br/>";
+
+var_export(json_encode($types));
 echo "</pre>";
+
+try {
+	$myfile = fopen("types.txt", "w");
+	fwrite($myfile, json_encode($types));
+	fclose($myfile);
+} catch (Exception $e) {
+	debug("Nao foi possivel criar o arquivo");
+}
 ?>
