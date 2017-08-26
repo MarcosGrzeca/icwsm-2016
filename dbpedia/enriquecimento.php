@@ -171,7 +171,7 @@ query("TRUNCATE TABLE type;");
 query("TRUNCATE TABLE resource_type;");
 query("TRUNCATE TABLE bridge;");*/
 
-$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NULL AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra) LIMIT 500");
+$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NULL AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra)");
 
 echo "<pre>";
 
@@ -191,7 +191,7 @@ foreach (getRows($tweets) as $key => $conceito) {
 		//debug("Types");
 		$retorno = json_decode(getTypesResource($conceito["resource"]), true);
 
-		$sql = "UPDATE `conceito` SET resourceCompleto = '" . escape(json_encode($retorno)) . "';";
+		$sql = "UPDATE `conceito` SET resourceCompleto = '" . escape(json_encode($retorno)) . "' WHERE id = '" . $conceito["id"] . "';";
 		//debug($sql);
 		query($sql);
 
