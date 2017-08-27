@@ -74,7 +74,7 @@ function escape($palavra) {
     return mysqli_real_escape_string(Connection::get(), $palavra);
 }
 
-function estatistica($ary, $operacao, $tipo = "auto",$formato = 5){
+function estatistica($ary, $operacao, $tipo,$formato = 5){
 
         // $operacao
 

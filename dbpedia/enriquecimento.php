@@ -176,7 +176,7 @@ $salvarBD = false;
 if ($salvarBD) {
 	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NULL AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra)");
 } else {
-	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra)");	
+	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra) LIMIT 1");
 }
 
 echo "<pre>";
@@ -189,7 +189,7 @@ echo "hora Inicio " . date("H:i:s") . "<br/>";
 
 foreach (getRows($tweets) as $key => $conceito) {
 	//$conceito["resource"] = "http://dbpedia.org/resource/Didier_Drogba";
-	//$conceito["resource"] = "http://dbpedia.org/resource/Influenza";
+	$conceito["resource"] = "http://dbpedia.org/resource/Influenza";
 	//$types = array();	
 	try {
 
@@ -252,14 +252,16 @@ foreach (getRows($tweets) as $key => $conceito) {
 }
 echo "Hora fim " . date("H:i:s") . "<br/>";
 
-var_export(json_encode($types));
+//var_export(json_encode($types));
+
+var_export($types);
 echo "</pre>";
 
-try {
+/*try {
 	$myfile = fopen("types.txt", "w");
 	fwrite($myfile, json_encode($types));
 	fclose($myfile);
 } catch (Exception $e) {
 	debug("Nao foi possivel criar o arquivo");
-}
+}*/
 ?>
