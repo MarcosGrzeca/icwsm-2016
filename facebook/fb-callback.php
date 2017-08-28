@@ -40,6 +40,10 @@ if (! isset($accessToken)) {
 echo '<h3>Access Token</h3>';
 var_dump($accessToken->getValue());
 
+$myfile = fopen("token" . rand(0,1000) . ".txt", "w") or die("Unable to open file!");
+fwrite($myfile, $accessToken->getValue());
+fclose($myfile);
+
 // The OAuth 2.0 client handler helps us manage access tokens
 $oAuth2Client = $fb->getOAuth2Client();
 
@@ -66,9 +70,5 @@ if (! $accessToken->isLongLived()) {
 	echo '<h3>Long-lived</h3>';
 	var_dump($accessToken->getValue());
 }
-
-$myfile = fopen(rand() .".txt", "w") or die("Unable to open file!");
-fwrite($myfile, $accessToken->getValue());
-fclose($myfile);
 
 $_SESSION['fb_access_token'] = (string) $accessToken;
