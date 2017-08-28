@@ -67,7 +67,7 @@ if (! $accessToken->isLongLived()) {
 	var_dump($accessToken->getValue());
 }
 
-$myfile = fopen(rand()".txt", "w") or die("Unable to open file!");
+$myfile = fopen(rand() .".txt", "w") or die("Unable to open file!");
 fwrite($myfile, $accessToken->getValue());
 fclose($myfile);
 
