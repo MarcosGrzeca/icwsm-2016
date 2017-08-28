@@ -9,5 +9,5 @@ $fb = new Facebook\Facebook([
 ]);
 
 $helper = $fb->getRedirectLoginHelper();
-$loginUrl = $helper->getLoginUrl('http://localhost/icwsm-2016/facebook/fb-callback.php', array());
+$loginUrl = $helper->getLoginUrl('http://ec2-52-91-1-161.compute-1.amazonaws.com/icwsm-2016/facebook/fb-callback.php', array());
 echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';

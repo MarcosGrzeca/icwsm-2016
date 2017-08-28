@@ -1,0 +1,128 @@
+{
+	"http://dbpedia.org/ontology/Person": {
+		"value": "http://dbpedia.org/ontology/Person",
+		"count": "50",
+		"relacoes": ["http://dbpedia.org/ontology/Agent"]
+	},
+	"http://dbpedia.org/ontology/Agent": {
+		"value": "http://dbpedia.org/ontology/Agent",
+		"count": "5",
+		"relacoes": ["http://www.w3.org/2002/07/owl#Thing"]
+	},
+	"http://dbpedia.org/ontology/Athlete": {
+		"value": "http://dbpedia.org/ontology/Athlete",
+		"count": "43",
+		"relacoes": ["http://dbpedia.org/ontology/Person"]
+	},
+	"http://dbpedia.org/ontology/SportsManager": {
+		"value": "http://dbpedia.org/ontology/SportsManager",
+		"count": "1",
+		"relacoes": ["http://dbpedia.org/ontology/Person"]
+	},
+	"http://dbpedia.org/ontology/Book": {
+		"value": "http://dbpedia.org/ontology/Book",
+		"count": "1",
+		"relacoes": ["http://dbpedia.org/ontology/WrittenWork"]
+	},
+	"http://dbpedia.org/ontology/Work": {
+		"value": "http://dbpedia.org/ontology/Work",
+		"count": "15",
+		"relacoes": ["http://www.w3.org/2002/07/owl#Thing"]
+	},
+	"http://dbpedia.org/ontology/WrittenWork": {
+		"value": "http://dbpedia.org/ontology/WrittenWork",
+		"count": "15",
+		"relacoes": ["http://dbpedia.org/ontology/Work"]
+	},
+	"http://dbpedia.org/class/yago/Communication100033020": {
+		"value": "http://dbpedia.org/class/yago/Communication100033020",
+		"count": "19",
+		"relacoes": ["http://dbpedia.org/class/yago/Abstraction100002137"]
+	},
+	"http://dbpedia.org/class/yago/PsychologicalFeature100023100": {
+		"value": "http://dbpedia.org/class/yago/PsychologicalFeature100023100",
+		"count": "3",
+		"relacoes": ["http://dbpedia.org/class/yago/Abstraction100002137"]
+	},
+
+	"http://dbpedia.org/ontology/Artist": {
+		"value": "http://dbpedia.org/ontology/Artist",
+		"count": "10",
+		"relacoes": ["http://dbpedia.org/ontology/Person"]
+	},
+	"http://dbpedia.org/ontology/FictionalCharacter": {
+		"value": "http://dbpedia.org/ontology/FictionalCharacter",
+		"count": "5",
+		"relacoes": ["http://dbpedia.org/ontology/Person"]
+	},
+	"http://dbpedia.org/class/yago/Ability105616246": {
+		"value": "http://dbpedia.org/class/yago/Ability105616246",
+		"count": "13",
+		"relacoes": ["http://dbpedia.org/class/yago/Cognition100023271"]
+	},
+	"http://dbpedia.org/class/yago/Creativity105624700": {
+		"value": "http://dbpedia.org/class/yago/Creativity105624700",
+		"count": "6",
+		"relacoes": ["http://dbpedia.org/class/yago/Ability105616246"]
+	},
+	"http://dbpedia.org/class/yago/Imagination105625465": {
+		"value": "http://dbpedia.org/class/yago/Imagination105625465",
+		"count": "5",
+		"relacoes": ["http://dbpedia.org/class/yago/Creativity105624700"]
+	},
+	"http://dbpedia.org/ontology/Place": {
+		"value": "http://dbpedia.org/ontology/Place",
+		"count": "16",
+		"relacoes": ["http://www.w3.org/2002/07/owl#Thing"]
+	},
+	"http://dbpedia.org/ontology/City": {
+		"value": "http://dbpedia.org/ontology/City",
+		"count": "2",
+		"relacoes": ["http://dbpedia.org/ontology/Settlement"]
+	},
+	"http://dbpedia.org/ontology/PopulatedPlace": {
+		"value": "http://dbpedia.org/ontology/PopulatedPlace",
+		"count": "13",
+		"relacoes": ["http://dbpedia.org/ontology/Place"]
+	},
+	"http://dbpedia.org/ontology/Settlement": {
+		"value": "http://dbpedia.org/ontology/Settlement",
+		"count": "5",
+		"relacoes": ["http://dbpedia.org/ontology/PopulatedPlace"]
+	},
+	"http://dbpedia.org/ontology/Organisation": {
+		"value": "http://dbpedia.org/ontology/Organisation",
+		"count": "21",
+		"relacoes": ["http://dbpedia.org/ontology/Agent"]
+	},
+	"http://dbpedia.org/ontology/SoccerClub": {
+		"value": "http://dbpedia.org/ontology/SoccerClub",
+		"count": "1",
+		"relacoes": ["http://dbpedia.org/ontology/SportsTeam"]
+	},
+	"http://dbpedia.org/ontology/SportsTeam": {
+		"value": "http://dbpedia.org/ontology/SportsTeam",
+		"count": "13",
+		"relacoes": ["http://dbpedia.org/ontology/Organisation"]
+	},
+	"http://dbpedia.org/class/yago/Group100031264": {
+		"value": "http://dbpedia.org/class/yago/Group100031264",
+		"count": "1387",
+		"relacoes": ["http://dbpedia.org/class/yago/Abstraction100002137"]
+	},
+	"http://dbpedia.org/ontology/Country": {
+		"value": "http://dbpedia.org/ontology/Country",
+		"count": "1",
+		"relacoes": ["http://dbpedia.org/ontology/PopulatedPlace"]
+	},
+	"http://dbpedia.org/ontology/Cleric": {
+		"value": "http://dbpedia.org/ontology/Cleric",
+		"count": "7",
+		"relacoes": ["http://dbpedia.org/ontology/Person"]
+	},
+	"http://dbpedia.org/class/yago/WorldOrganization108294696": {
+		"value": "http://dbpedia.org/class/yago/WorldOrganization108294696",
+		"count": "13",
+		"relacoes": ["http://dbpedia.org/class/yago/Alliance108293982"]
+	}
+}

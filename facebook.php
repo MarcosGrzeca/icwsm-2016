@@ -1,7 +1,7 @@
 <?php
 require_once("config.php");
 require_once("vendor/autoload.php");
-$tweets = query("SELECT * FROM tweets WHERE localizacaoDois IS NULL");
+$tweets = query("SELECT * FROM tweets WHERE localizacao100 IS NULL");
 
 $fb = new Facebook\Facebook([
 	'app_id' => '1923793047872398',
@@ -42,7 +42,7 @@ foreach (getRows($tweets) as $key => $value) {
 		$tweet = json_decode($value["texto"]);
 		if (isset($tweet->geo->coordinates)) {
 			try {
-				$response = $fb->get('search?type=place&center=' . $tweet->geo->coordinates[0] . ', ' . $tweet->geo->coordinates[1] . '&fields=name,about,category_list,description,hours,location&distance=75', $tokens[$iToken]);
+				$response = $fb->get('search?type=place&center=' . $tweet->geo->coordinates[0] . ', ' . $tweet->geo->coordinates[1] . '&fields=name,about,category_list,description,hours,location&distance=100', $tokens[$iToken]);
 			} catch(Facebook\Exceptions\FacebookResponseException $e) {
 				echo 'Graph returned an error: ' . $e->getMessage();
 				throw $e;
@@ -50,7 +50,7 @@ foreach (getRows($tweets) as $key => $value) {
 				echo 'Facebook SDK returned an error: ' . $e->getMessage();
 				throw $e;
 			}
-			$update = "UPDATE `tweets` SET localizacaoDois = '" . mysqli_real_escape_string(Connection::get(), $response->getBody()) . "' WHERE id = "  . $value["id"];
+			$update = "UPDATE `tweets` SET localizacao100 = '" . mysqli_real_escape_string(Connection::get(), $response->getBody()) . "' WHERE id = "  . $value["id"];
 			query($update);
 		}
 	} catch (Exception $e) {
