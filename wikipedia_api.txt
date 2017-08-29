@@ -1,0 +1,9 @@
+http://dbpedia.org/page/Vodka
+http://dbpedia.org/page/Beer
+ - https://en.wikipedia.org/w/api.php?action=query&titles=Beer&prop=categories
+http://dbpedia.org/page/Absolut_Vodka
+http://dbpedia.org/page/Wine
+ - https://en.wikipedia.org/w/api.php?action=query&titles=Wine&prop=categories
+
+ https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&titles=Albert%20Einstein&prop=categories
+ https://www.mediawiki.org/wiki/API:Properties
