@@ -171,12 +171,12 @@ query("TRUNCATE TABLE type;");
 query("TRUNCATE TABLE resource_type;");
 query("TRUNCATE TABLE bridge;");*/
 
-$salvarBD = false;
+$salvarBD = true;
 
 if ($salvarBD) {
-	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NULL AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra)");
+	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NULL");
 } else {
-	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra) LIMIT 1");
+	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NULL AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra) LIMIT 1");
 }
 
 echo "<pre>";
@@ -189,7 +189,7 @@ echo "hora Inicio " . date("H:i:s") . "<br/>";
 
 foreach (getRows($tweets) as $key => $conceito) {
 	//$conceito["resource"] = "http://dbpedia.org/resource/Didier_Drogba";
-	$conceito["resource"] = "http://dbpedia.org/resource/Influenza";
+	//$conceito["resource"] = "http://dbpedia.org/resource/Influenza";
 	//$types = array();	
 	try {
 
@@ -254,7 +254,7 @@ echo "Hora fim " . date("H:i:s") . "<br/>";
 
 //var_export(json_encode($types));
 
-var_export($types);
+//var_export($types);
 echo "</pre>";
 
 /*try {
