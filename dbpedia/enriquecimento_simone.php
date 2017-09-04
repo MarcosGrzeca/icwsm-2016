@@ -15,7 +15,7 @@ function getTypesResource($resource) {
 		SELECT ?type WHERE
 		{ 
 			<" . $resource . "> rdf:type ?type.
-		} LIMIT 100
+		}
 		";
 
 		curl_setopt_array($curl, array(
@@ -69,7 +69,7 @@ function getSubClasses($resource) {
 			<" . $resource . "> rdf:type ?type.
 			?x  rdfs:subClassOf  ?type
 
-		} LIMIT 100
+		}
 		";
 
 		curl_setopt_array($curl, array(
@@ -124,7 +124,7 @@ function getCountSC($resource) {
 			<" . $resource . "> rdf:type ?type.
 			?x  rdfs:subClassOf  ?type
 
-		} LIMIT 100
+		}
 
 		";
 
@@ -174,6 +174,9 @@ echo "hora Inicio " . date("H:i:s") . "<br/>";
 
 $resources = array("http://dbpedia.org/resource/Adam", "http://dbpedia.org/resource/Andy_Carroll", "http://dbpedia.org/resource/Andy_Townsend", "http://dbpedia.org/resource/Bobby_Tambling", "http://dbpedia.org/resource/Charlie_Adam", "http://dbpedia.org/resource/Chris_Waddle", "http://dbpedia.org/resource/Daniel_Agger", "http://dbpedia.org/resource/Didier_Drogba", "http://dbpedia.org/resource/Frank_Lampard", "http://dbpedia.org/resource/Geoff_Hurst", "http://dbpedia.org/resource/Glen_Johnson_(English_footballer)", "http://dbpedia.org/resource/Graham_Norton", "http://dbpedia.org/resource/Jay_Spearing", "http://dbpedia.org/resource/Jimmy_Armfield", "http://dbpedia.org/resource/John_Terry", "http://dbpedia.org/resource/Jurgen,_A_Comedy_of_Justice", "http://dbpedia.org/resource/Ken_Dodd", "http://dbpedia.org/resource/Kenny_Dalglish", "http://dbpedia.org/resource/Lady_Gaga", "http://dbpedia.org/resource/Lisa_Simpson", "http://dbpedia.org/resource/Liverpool", "http://dbpedia.org/resource/Liverpool_F.C.", "http://dbpedia.org/resource/London", "http://dbpedia.org/resource/Louisville,_Kentucky", "http://dbpedia.org/resource/Luis_SuÃ¡rez", "http://dbpedia.org/resource/Manchester", "http://dbpedia.org/resource/Norway", "http://dbpedia.org/resource/Paul_the_Apostle", "http://dbpedia.org/resource/Roberto_Di_Matteo", "http://dbpedia.org/resource/Roy_Keane", "http://dbpedia.org/resource/Steven_Gerrard", "http://dbpedia.org/resource/United_Nations", "http://dbpedia.org/resource/Uruguay");
 
+
+//$resources = array("http://dbpedia.org/resource/Didier_Drogba");
+
 foreach ($resources as $key => $conceito) {
 	try {
 		$typesLocais = array();
@@ -186,6 +189,7 @@ foreach ($resources as $key => $conceito) {
 			}
 		}
 		$retornoSubClasses = json_decode(getSubClasses($conceito), true);
+
 		foreach ($retornoSubClasses["results"]["bindings"] as $key => $value) {
 			if (isset($types[$value["x"]["value"]])) {
 				if (!in_array($value["type"]["value"], $types[$value["x"]["value"]]["relacoes"])) {
@@ -205,18 +209,20 @@ foreach ($resources as $key => $conceito) {
 		}
 		
 		if ($conceito == "http://dbpedia.org/resource/Andy_Carroll") {
-			var_export($typesLocais);
+			//var_export($typesLocais);
 		}
 	} catch (Exception $e) {
 
 	}
+
+	//break;
 }
 
 echo "<br/><br/>Hora fim " . date("H:i:s") . "<br/><br/><br/>";
 
-echo(json_encode($types));
+//echo(json_encode($types));
 
-//var_export($types);
+var_export(json_encode($types));
 echo "</pre>";
 
 /*try {

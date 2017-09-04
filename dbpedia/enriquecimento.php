@@ -15,7 +15,7 @@ function getTypesResource($resource) {
 		SELECT ?type WHERE
 		{ 
 			<" . $resource . "> rdf:type ?type.
-		} LIMIT 100
+		}
 		";
 
 		curl_setopt_array($curl, array(
@@ -69,7 +69,7 @@ function getSubClasses($resource) {
 			<" . $resource . "> rdf:type ?type.
 			?x  rdfs:subClassOf  ?type
 
-		} LIMIT 100
+		}
 		";
 
 		curl_setopt_array($curl, array(
@@ -124,8 +124,7 @@ function getCountSC($resource) {
 			<" . $resource . "> rdf:type ?type.
 			?x  rdfs:subClassOf  ?type
 
-		} LIMIT 100
-
+		}
 		";
 
 		curl_setopt_array($curl, array(
@@ -176,20 +175,14 @@ $salvarBD = true;
 if ($salvarBD) {
 	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NULL");
 } else {
-	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NULL AND palavra IN (SELECT palavra FROM tweets_nlp WHERE origem = 'C' AND tweets_nlp.palavra = conceito.palavra) LIMIT 1");
+	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NOT NULL");
 }
 
 echo "<pre>";
 
-function adicionarTypeLocal() {
-
-}
-
 echo "hora Inicio " . date("H:i:s") . "<br/>";
 
 foreach (getRows($tweets) as $key => $conceito) {
-	//$conceito["resource"] = "http://dbpedia.org/resource/Didier_Drogba";
-	//$conceito["resource"] = "http://dbpedia.org/resource/Influenza";
 	//$types = array();	
 	try {
 
@@ -252,7 +245,7 @@ foreach (getRows($tweets) as $key => $conceito) {
 }
 echo "Hora fim " . date("H:i:s") . "<br/>";
 
-//var_export(json_encode($types));
+var_export(json_encode($types));
 
 //var_export($types);
 echo "</pre>";
