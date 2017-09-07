@@ -1,0 +1,68 @@
+## OBTENDO CATEGORIAS
+PREFIX dbres: <http://dbpedia.org/resource/>
+PREFIX  rdfs:   <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?subject WHERE
+{ 
+	<http://dbpedia.org/resource/Influenza> dct:subject ?subject.
+}
+
+## OBTENDO SUPERCLASSES
+http://www.w3.org/2004/02/skos/core#broader
+
+select ?value where { 
+  <http://dbpedia.org/resource/Category:Influenza> skos:broader ?value 
+}
+
+
+#OBTENDO SUPER CLASSES
+PREFIX dbres: <http://dbpedia.org/resource/>
+PREFIX  rdfs:   <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  cat: 	<http://www.w3.org/2004/02/skos/core#broader>
+
+
+SELECT ?subject ?x  WHERE
+{ 
+	<http://dbpedia.org/resource/Influenza> dct:subject ?subject.
+	?subject  skos:broader  ?x
+}
+
+
+## SUB CLASSES
+PREFIX dbres: <http://dbpedia.org/resource/>
+PREFIX  rdfs:   <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  cat: 	<http://www.w3.org/2004/02/skos/core#broader>
+
+
+SELECT ?subject ?x  WHERE
+{ 
+	<http://dbpedia.org/resource/Influenza> dct:subject ?subject.
+	?x skos:broader ?subject
+}
+
+
+
+### ANOTACOES
+dcterms:subject
+
+skos:broader
+
+dbpedia:Nokia dcterms:subject category:Finnish_brands
+category:Finnish_brands skos:broader category:Brands_by_country
+
+
+skos:broader
+is skos:broader of
+
+
+##SUPER CLASSES
+
+##SUB CLASSES
+
+http://purl.org/dc/terms/subject
+
+
+https://stackoverflow.com/questions/28313998/sparql-query-to-get-skosbroader-property-of-a-dbpedia-category

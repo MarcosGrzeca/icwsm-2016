@@ -46,6 +46,8 @@ function query($sql, $die = true) {
         if ($die) {
             debug("CATCH");
             debug($sql);
+
+            var_export($sql);
             die($e->getMessage());
         } else {
             throw $e;
@@ -236,3 +238,17 @@ function estatistica($ary, $operacao, $tipo,$formato = 5){
             }
             return $resultado;
         }
+
+
+function converterEnconding($xmlE){
+   $encoding[0] = "UTF-8";
+   $encoding[1] = "Windows-1252";
+   $encoding[2] = "ISO-8859-1";
+   $encoding[3] = "ISO-8859-15";
+   $encoding[4] = "Windows-1251";
+   
+   if (mb_detect_encoding($xmlE, $encoding) != "UTF-8"){
+        $xmlE = utf8_encode($xmlE);
+   }
+   return $xmlE;
+}
