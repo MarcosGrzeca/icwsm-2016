@@ -14,11 +14,16 @@ class Connection {
 	}
 
 	private static function connect() {
-		if (self::$bd == "rds") {
+		/*if (self::$bd == "rds") {
 			self::$conn = new mysqli("alemao.ckfgeb2fkvqp.sa-east-1.rds.amazonaws.com:3306", "root", "alemao10", "alemao");
 		} else {
 			self::$conn = new mysqli("localhost", "root", "", self::$bd);
-		}
+		}*/
+
+//			self::$conn = new mysqli("localhost", "root", "", self::$bd);
+
+		self::$conn = new mysqli("icwsm.cg8tga6okbyx.us-east-1.rds.amazonaws.com:3306", "root", "tum2Tres4", "icwsm");
+
 
 	    /* check connection */
 	    if (self::$conn->connect_errno) {
