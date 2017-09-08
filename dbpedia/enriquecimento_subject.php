@@ -163,7 +163,7 @@ function getSuperClasses($resource) {
 }
 
 
-$salvarBD = true;
+$salvarBD = false;
 
 echo "<pre>";
 echo "hora Inicio " . date("H:i:s") . "<br/>";
@@ -241,7 +241,10 @@ function incluirBridge($filho, $pai) {
 
 //var_export($subjectsLocais);
 
+$sql = "INSERT INTO retorno VALUES ('" . escape(json_encode($subjects)) . "');";
+query($sql, false);
 echo "SUBJECT<br/><br/><br/>";
 var_export(json_encode($subjects));
+
 echo "</pre>";
 ?>
