@@ -163,7 +163,7 @@ function getSuperClasses($resource) {
 }
 
 
-$salvarBD = false;
+$salvarBD = true;
 
 echo "<pre>";
 echo "hora Inicio " . date("H:i:s") . "<br/>";
