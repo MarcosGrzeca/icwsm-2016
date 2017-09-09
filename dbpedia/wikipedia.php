@@ -55,7 +55,7 @@ function getWikiId($resource) {
 $salvarBD = true;
 
 if ($salvarBD) {
-	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND wikiID IS NULL LIMIT 300");
+	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND wikiID IS NULL");
 } else {
 	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceTypes IS NOT NULL");
 }
