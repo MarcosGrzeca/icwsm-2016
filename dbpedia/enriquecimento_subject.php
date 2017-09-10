@@ -163,7 +163,7 @@ function getSuperClasses($resource) {
 }
 
 
-$salvarBD = false;
+$salvarBD = true;
 
 echo "<pre>";
 echo "hora Inicio " . date("H:i:s") . "<br/>";
@@ -207,6 +207,7 @@ foreach (getRows($tweets) as $key => $conceito) {
 			}
 		}
 
+		/*
 		$retornoSuperClasses = json_decode(getSuperClasses($conceito["resource"]), true);
 		foreach ($retornoSuperClasses["results"]["bindings"] as $key => $value) {
 			if (!isset($subjects[$value["x"]["value"]])) {
@@ -219,7 +220,7 @@ foreach (getRows($tweets) as $key => $conceito) {
 			if (!in_array($value["x"]["value"], $subjectsLocais)) {
 				$subjectsLocais[] = $value["x"]["value"];
 			}
-		}
+		}*/
 		foreach ($subjectsLocais as $keyCT => $valueCT) {
 			try {
 				if ($salvarBD) {
@@ -240,11 +241,13 @@ function incluirBridge($filho, $pai) {
 }
 
 //var_export($subjectsLocais);
+echo "SUBJECT<br/><br/><br/>";
+var_export(json_encode($subjects));
+
+sleep(5);
 
 $sql = "INSERT INTO retorno VALUES ('" . escape(json_encode($subjects)) . "');";
 query($sql, false);
-echo "SUBJECT<br/><br/><br/>";
-var_export(json_encode($subjects));
 
 echo "</pre>";
 ?>
