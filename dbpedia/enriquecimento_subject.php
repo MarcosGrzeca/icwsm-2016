@@ -181,7 +181,7 @@ $resources = array(
 $resources = array(array("resource" => "http://dbpedia.org/resource/Influenza"));
 
 
-$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceCompleto IS NOT NULL");
+$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resource IS NOT NULL");
 foreach (getRows($tweets) as $key => $conceito) {
 
 //foreach ($resources as $key => $conceito) {
