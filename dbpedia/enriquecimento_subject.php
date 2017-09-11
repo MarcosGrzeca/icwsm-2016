@@ -225,7 +225,7 @@ foreach (getRows($tweets) as $key => $conceito) {
 			try {
 				if ($salvarBD) {
 					$sql = "INSERT INTO `resource_subject` (resource, subject) VALUES ('" . escape($conceito["resource"]) . "', '" . escape($valueCT) . "');";
-					query($sql, true);
+					query($sql, false);
 				}
 			} catch (Exception $e) {}
 		}
