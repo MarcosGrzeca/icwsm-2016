@@ -178,7 +178,8 @@ $categoryTree = array();
 
 $ind = 0;
 while (true) {
-	$tweets = query("SELECT DISTINCT(wikiID) as wikiID, resource FROM conceito c WHERE sucesso = 1 AND wikiID IS NOT NULL AND NOT EXISTS (SELECT w.resource FROM wikipedia_category w WHERE w.resource = c.resource) LIMIT " . rand(0, 400) . ", 10");
+	//$tweets = query("SELECT DISTINCT(wikiID) as wikiID, resource FROM conceito c WHERE sucesso = 1 AND wikiID IS NOT NULL AND NOT EXISTS (SELECT w.resource FROM wikipedia_category w WHERE w.resource = c.resource) LIMIT " . rand(0, 400) . ", 10");
+	$tweets = query("SELECT DISTINCT(wikiID) as wikiID, resource FROM conceito c WHERE sucesso = 1 AND wikiID IS NOT NULL AND NOT EXISTS (SELECT w.resource FROM wikipedia_category w WHERE w.resource = c.resource) LIMIT 10");
 	if (getNumRows($tweets) == 0) {
 		echo 'FIM';
 		break;
