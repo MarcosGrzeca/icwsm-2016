@@ -1,7 +1,7 @@
 <?php
 
 require_once("../config.php");
-//require('blockspring.php');
+require('blockspring.php');
 
 set_time_limit(0);
 //set_time_limit(320);
@@ -176,57 +176,15 @@ $categoryTree = array();
 
 $ind = 0;
 while (true) {
-	$tweets = query("SELECT * FROM conceito c WHERE sucesso = 1 AND wikiID IS NOT NULL AND NOT EXISTS (SELECT w.resource FROM wikipedia_category w WHERE w.resource = c.resource) LIMIT 10");
+	$tweets = query("SELECT DISTINCT(category) FROM wikipedia_category LIMIT 1");
 	if (getNumRows($tweets) == 0) {
 		echo 'FIM';
 		break;
 	}
-	$wikis = array();
-	foreach (getRows($tweets) as $key => $conceito) {
-		$wikis[$conceito["resource"]] = $conceito["wikiID"];
-	}
-	$categoriesTmp = json_decode(getCategories($wikis));
-	$categories = $categoriesTmp->query->pages;
-	while (isset($categoriesTmp->continue)) {
-		$categoriesTmp = json_decode(getCategories($wikis, $categoriesTmp->continue->clcontinue));
-		$categories = array_merge($categories, $categoriesTmp->query->pages);
-	}
-
-	foreach ($categories as $keyPage => $valuePage) {
-		if (!isset($categoryTree[$valuePage->pageid])) {
-			$categoryTree[$valuePage->pageid] = array();
-		}
-		if (isset($valuePage->categories)) {
-			foreach ($valuePage->categories as $keyCat => $valueCat) {
-				$categoryTree[$valuePage->pageid][$valueCat->title] = array("nome" => $valueCat->title);
-			}
-		}
-	}
-
-	foreach ($categoryTree as $key => $value) {
-		if (count($value) == 0) {
-			try {
-				$insert = "INSERT INTO `wikipedia_category` (resource, category) VALUES ('" . escape(array_search($key, $wikis)) . "', '" . escape(NULL) . "');";
-				query($insert, false);
-			} catch (Exception $e) {}
-		} else {
-			foreach ($value as $keyCategoria => $categoria) {
-				try {
-					$insert = "INSERT INTO `wikipedia_category` (resource, category) VALUES ('" . escape(array_search($key, $wikis)) . "', '" . escape($categoria["nome"]) . "');";
-					query($insert, false);
-				} catch (Exception $e) {}
-			}
-		}
-	}
-	continue;
 	foreach ($categoryTree as $key => $value) {
 		$ind = 0;
 		foreach ($value as $keyCategoria => $categoria) {
-			/*$tree = getArvoreCompleta($categoria["nome"]);
-			if (count($tree)) {
-				$categoryTree[$key][$keyCategoria]["filhos"] = $tree;
-			}*/
-			$tree = getArvoreCompletaNew($categoria["nome"]);
+				$tree = getArvoreCompletaNew($categoria["nome"]);
 			if (count($tree)) {
 				$categoryTree[$key][$keyCategoria]["filhos"] = $tree;
 			}
@@ -237,23 +195,7 @@ while (true) {
 		}
 		break;
 	}
-
-	foreach ($categories as $keyPage => $valuePage) {
-		if (isset($valuePage->categories)) {
-			foreach ($valuePage->categories as $keyCat => $valueCat) {
-				if (!isset($categoryTree[$valueCat->title])) {
-					//Obter Arvore
-					//debug("Arvore da categoria " . $valueCat->title);
-					//$categoryTree = getArvoreCompleta($valueCat->title);
-				}
-				if ($keyCat > 2) {
-					break;		
-				}
-			}
-		}
-	}
 	break;
-	$ind++;
 }
 
 //var_export($categoryTree);
