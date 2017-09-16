@@ -225,10 +225,11 @@ while (true) {
 						var_export($key);
 						var_export($wikis);
 
-						if ($numErros > 3) {
+						if ($numErros > 8) {
 							die("Resource em branco " . $key);
 						}
 						$numErros++;
+						sleep(5);
 						break 2;
 					}
 					query($insert, false);
