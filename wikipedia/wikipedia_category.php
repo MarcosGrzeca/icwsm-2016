@@ -183,7 +183,9 @@ while (true) {
 	}
 	$wikis = array();
 	foreach (getRows($tweets) as $key => $conceito) {
-		$wikis[$conceito["resource"]] = $conceito["wikiID"];
+		if (!in_array($conceito["wikiID"], $wikis)) {
+			$wikis[$conceito["resource"]] = $conceito["wikiID"];
+		}
 	}
 	$categoriesTmp = json_decode(getCategories($wikis));
 	$categories = $categoriesTmp->query->pages;
