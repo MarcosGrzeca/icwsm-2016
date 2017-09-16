@@ -190,7 +190,7 @@ foreach (getRows($tweets) as $key => $conceito) {
 		$retorno = json_decode(getTypesResource($conceito["resource"]), true);
 
 		if ($salvarBD) {
-			$sql = "UPDATE `conceito` SET resourceCompleto = '" . escape(json_encode($retorno)) . "' WHERE id = '" . $conceito["id"] . "';";
+			$sql = "UPDATE `conceito` SET resourceTypes = '" . escape(json_encode($retorno)) . "' WHERE id = '" . $conceito["id"] . "';";
 			query($sql);
 		}
 
