@@ -168,36 +168,15 @@ $salvarBD = true;
 echo "<pre>";
 debug("INICIO " . date("H:i:s"));
 
-//json_encode(getArvoreCompleta("Category:Ice hockey leagues in the United States"));
-//debug(json_encode(getArvoreCompleta("Category:National Hockey League seasons"))); //110 categorias 
-//die;
-
 $categoryTree = array();
-
-$ind = 0;
-while (true) {
-	$tweets = query("SELECT DISTINCT(category) FROM wikipedia_category LIMIT 1");
-	if (getNumRows($tweets) == 0) {
-		echo 'FIM';
-		break;
+$tweets = query("SELECT DISTINCT(category) as category FROM wikipedia_category wc WHERE category != '' AND NOT EXISTS (SELECT cl.categoriaPai FROM category_link cl WHERe cl.categoriaPai = category)");
+foreach (getRows($tweets) as $key => $value) {
+	$tree = getCategoriesTNew($value["category"]);
+	foreach ($tree as $keyCat => $valueCat) {
+		try {
+			$insert = "INSERT INTO `category_link` (categoriaPai, categoriaFilho) VALUES ('" . escape($value["category"]) . "', '" . escape($valueCat) . "');";
+			query($insert, false);
+		} catch (Exception $e) {}
 	}
-	foreach ($categoryTree as $key => $value) {
-		$ind = 0;
-		foreach ($value as $keyCategoria => $categoria) {
-				$tree = getArvoreCompletaNew($categoria["nome"]);
-			if (count($tree)) {
-				$categoryTree[$key][$keyCategoria]["filhos"] = $tree;
-			}
-			$ind++;
-			if ($ind > 1) {
-				break;
-			}
-		}
-		break;
-	}
-	break;
 }
-
-//var_export($categoryTree);
-debug("FIM " .date("H:i:s"));
 ?>
