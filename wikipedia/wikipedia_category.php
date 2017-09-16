@@ -207,12 +207,18 @@ while (true) {
 		if (count($value) == 0) {
 			try {
 				$insert = "INSERT INTO `wikipedia_category` (resource, category) VALUES ('" . escape(array_search($key, $wikis)) . "', '" . escape(NULL) . "');";
+				if (array_search($key, $wikis) == "") {
+					die("Resource em branco");
+				}
 				query($insert, false);
 			} catch (Exception $e) {}
 		} else {
 			foreach ($value as $keyCategoria => $categoria) {
 				try {
 					$insert = "INSERT INTO `wikipedia_category` (resource, category) VALUES ('" . escape(array_search($key, $wikis)) . "', '" . escape($categoria["nome"]) . "');";
+					if (array_search($key, $wikis) == "") {
+						die("Resource em branco");
+					}
 					query($insert, false);
 				} catch (Exception $e) {}
 			}
