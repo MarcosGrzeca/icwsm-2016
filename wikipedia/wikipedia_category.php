@@ -172,6 +172,8 @@ debug("INICIO " . date("H:i:s"));
 //debug(json_encode(getArvoreCompleta("Category:National Hockey League seasons"))); //110 categorias 
 //die;
 
+$numErros = 0;
+
 $categoryTree = array();
 
 $ind = 0;
@@ -222,7 +224,11 @@ while (true) {
 					if (array_search($key, $wikis) == "") {
 						var_export($key);
 						var_export($wikis);
-						die("Resource em branco " . $key);
+
+						if ($numErros > 3) {
+							die("Resource em branco " . $key);
+						}
+						$numErros++;
 						break 2;
 					}
 					query($insert, false);
