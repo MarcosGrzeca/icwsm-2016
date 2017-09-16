@@ -225,7 +225,7 @@ while (true) {
 						var_export($key);
 						var_export($wikis);
 
-						if ($numErros > 8) {
+						if ($numErros > 3) {
 							die("Resource em branco " . $key);
 						}
 						$numErros++;

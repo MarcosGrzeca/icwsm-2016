@@ -14,12 +14,12 @@ echo "<pre>";
 debug("INICIO " . date("H:i:s"));
 
 $categoryTree = array();
-$tweets = query("SELECT DISTINCT(category) as category FROM wikipedia_category wc WHERE category != '' AND NOT EXISTS (SELECT cl.categoriaPai FROM category_link cl WHERe cl.categoriaPai = category)");
+$tweets = query("SELECT DISTINCT(categoriaFilho) as categoriaFilho FROM category_link wc WHERE categoriaFilho != '' AND NOT EXISTS (SELECT cl.categoriaPai FROM category_link cl WHERe cl.categoriaPai = categoriaFilho)");
 foreach (getRows($tweets) as $key => $value) {
-	$tree = getCategoriesTNew($value["category"]);
+	$tree = getCategoriesTNew($value["categoriaFilho"]);
 	foreach ($tree as $keyCat => $valueCat) {
 		try {
-			$insert = "INSERT INTO `category_link` (categoriaPai, categoriaFilho) VALUES ('" . escape($value["category"]) . "', '" . escape("Category:" . $valueCat) . "');";
+			$insert = "INSERT INTO `category_link` (categoriaPai, categoriaFilho) VALUES ('" . escape($value["categoriaFilho"]) . "', '" . escape("Category:" . $valueCat) . "');";
 			query($insert, false);
 		} catch (Exception $e) {}
 	}
