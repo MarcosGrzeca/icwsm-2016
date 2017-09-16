@@ -208,7 +208,7 @@ while (true) {
 			try {
 				$insert = "INSERT INTO `wikipedia_category` (resource, category) VALUES ('" . escape(array_search($key, $wikis)) . "', '" . escape(NULL) . "');";
 				if (array_search($key, $wikis) == "") {
-					die("Resource em branco");
+					die("Resource em branco " . $key);
 				}
 				query($insert, false);
 			} catch (Exception $e) {}
@@ -217,7 +217,7 @@ while (true) {
 				try {
 					$insert = "INSERT INTO `wikipedia_category` (resource, category) VALUES ('" . escape(array_search($key, $wikis)) . "', '" . escape($categoria["nome"]) . "');";
 					if (array_search($key, $wikis) == "") {
-						die("Resource em branco");
+						die("Resource em branco " . $key);
 					}
 					query($insert, false);
 				} catch (Exception $e) {}
