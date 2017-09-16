@@ -210,7 +210,8 @@ while (true) {
 			try {
 				$insert = "INSERT INTO `wikipedia_category` (resource, category) VALUES ('" . escape(array_search($key, $wikis)) . "', '" . escape(NULL) . "');";
 				if (array_search($key, $wikis) == "") {
-					die("Resource em branco " . $key);
+					//die("Resource em branco " . $key);
+					break 2;
 				}
 				query($insert, false);
 			} catch (Exception $e) {}
@@ -219,9 +220,10 @@ while (true) {
 				try {
 					$insert = "INSERT INTO `wikipedia_category` (resource, category) VALUES ('" . escape(array_search($key, $wikis)) . "', '" . escape($categoria["nome"]) . "');";
 					if (array_search($key, $wikis) == "") {
-						var_export($key);
+						/*var_export($key);
 						var_export($wikis);
-						die("Resource em branco " . $key);
+						die("Resource em branco " . $key);*/
+						break 2;
 					}
 					query($insert, false);
 				} catch (Exception $e) {}
