@@ -1,0 +1,4 @@
+- dbpedia get wikiid
+- wikipedia_category
+- wikipedia_category_ini
+- wikipedia_category_niveis

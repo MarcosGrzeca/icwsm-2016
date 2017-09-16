@@ -52,17 +52,7 @@ function getWikiId($resource) {
 	}
 }
 
-$salvarBD = true;
-
-if ($salvarBD) {
-	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND wikiID IS NULL");
-} else {
-	$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND resourceTypes IS NOT NULL");
-}
-
-echo "<pre>";
-
-echo "hora Inicio " . date("H:i:s") . "<br/>";
+$tweets = query("SELECT * FROM conceito WHERE sucesso = 1 AND wikiID IS NULL");
 
 foreach (getRows($tweets) as $key => $conceito) {
 	try {
@@ -71,81 +61,8 @@ foreach (getRows($tweets) as $key => $conceito) {
 			$sql = "UPDATE `conceito` SET wikiID = '" . escape($wiki["wikiID"]["value"]) . "' WHERE id = '" . $conceito["id"] . "';";
 			query($sql);
 		}
-		//debug($retorno);
-
-		/*if (is_array($retorno)) {
-			foreach ($retorno as $keyConceito => $valueConceito) {
-				# code...
-
-				if ($keyConceito == "http://dbpedia.org/ontology/wikiPageID") {
-					debug($valueConceito);
-				}
-			}
-
-		}*/
-		//var_export($retorno);
-//		debug($retorno);
-
-		/*if ($salvarBD) {
-			$sql = "UPDATE `conceito` SET resourceCompleto = '" . escape(json_encode($retorno)) . "' WHERE id = '" . $conceito["id"] . "';";
-			query($sql);
-		}
-
-		foreach ($retorno["results"]["bindings"] as $keyType => $type) {
-			$typesLocais[] = $type["type"]["value"];
-			if (!isset($types[$type["type"]["value"]])) {
-				$types[$type["type"]["value"]] = array("value" => $type["type"]["value"], "count" => 0, "relacoes" => array());
-			}
-		}
-		$retornoSubClasses = json_decode(getSubClasses($conceito["resource"]), true);
-		foreach ($retornoSubClasses["results"]["bindings"] as $key => $value) {
-			if (isset($types[$value["x"]["value"]])) {
-				if (!in_array($value["type"]["value"], $types[$value["x"]["value"]]["relacoes"])) {
-					$types[$value["x"]["value"]]["relacoes"][] = $value["type"]["value"];
-					try {
-						if ($salvarBD) {
-							$sql = "INSERT INTO bridge VALUES ('" . escape($value["x"]["value"]) . "', '" . escape($value["type"]["value"]) . "');";
-							query($sql, false);
-						}
-					} catch (Exception $e) {}
-					if (!isset($types[$value["type"]["value"]])) {
-						$types[$value["type"]["value"]] = array("value" => $value["type"]["value"], "count" => 0, "relacoes" => array());
-					}
-					if (!in_array($value["type"]["value"], $typesLocais)) {
-						$typesLocais[] = $value["type"]["value"];
-					}
-				}
-			}
-		}
-		$retornoSum = json_decode(getCountSC($conceito["resource"]), true);
-		foreach ($retornoSum["results"]["bindings"] as $key => $value) {
-			$types[$value["type"]["value"]]["count"] = $value["valueSum"]["value"];
-			try {
-				if ($salvarBD) {
-					$sql = "INSERT INTO `type` (type, sum) VALUES ('" . escape($value["type"]["value"]) . "', '" . escape($value["valueSum"]["value"]) . "');";
-					query($sql, false);
-				}
-			} catch (Exception $e) {}
-		}
-
-		foreach ($typesLocais as $keyCT => $valueCT) {
-			try {
-				if ($salvarBD) {
-					$sql = "INSERT INTO `resource_type` (resource, type) VALUES ('" . escape($conceito["resource"]) . "', '" . escape($valueCT) . "');";
-					query($sql, false);
-				}
-			} catch (Exception $e) {}
-		}
-		*/
 	} catch (Exception $e) {
 		debug($e->getMessage());
 	}
 }
-/*try {
-	$myfile = fopen("types.txt", "w");
-	fwrite($myfile, json_encode($types));
-	fclose($myfile);
-} catch (Exception $e) {
-	debug("Nao foi possivel criar o arquivo");
-}*/
 ?>
