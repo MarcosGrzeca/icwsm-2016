@@ -1,0 +1,3 @@
+wget https://pear.php.net/go-pear.phar
+php go-pear.phar
+sed -i "$ s|\-n||g" /usr/bin/pecl
