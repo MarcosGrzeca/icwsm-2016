@@ -1,0 +1,27 @@
+{
+  "name": "node-wikipedia",
+  "version": "0.0.2",
+  "author": "Chris Wilson <christopher.e.wilson@gmail.com>",
+  "description": "Simple wrapper for MediaWiki API",
+  "contributors": [],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TimeMagazine/node-wikipedia.git"
+  },
+  "keywords": [
+    "wikipedia",
+    "mediawiki",
+    "api",
+    "wrapper"
+  ],
+  "scripts": {
+    "test": "test/test.js"
+  },
+  "dependencies" : {
+    "request" :  ">= 2.3.0",
+    "downcache" : ">= 0.0.2",
+    "npmlog": "~0.0.6",
+    "cheerio": "~0.16.0"
+  }
+}
