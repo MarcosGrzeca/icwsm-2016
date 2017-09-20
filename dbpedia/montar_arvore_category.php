@@ -26,13 +26,12 @@ foreach (getRows($tweets) as $key => $escolhido) {
 }
 
 
-//http://dbpedia.org/resource/Category:
-//echo "<pre>";
-//var_export($tree);
+//
+var_export(str_replace("http://dbpedia.org/resource/Category:", "", json_encode($tree)));
 
-
+/*
 $quartil1Grafo = stats_stat_percentile($dados, 25);
 $quartil3Grafo = stats_stat_percentile($dados, 75);
 
 var_export($quartil1Grafo . "<br/>");
-var_export($quartil3Grafo . "<br/>");
+var_export($quartil3Grafo . "<br/>");*/
