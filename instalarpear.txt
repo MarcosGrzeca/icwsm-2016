@@ -1,3 +1,5 @@
 wget https://pear.php.net/go-pear.phar
 php go-pear.phar
 sed -i "$ s|\-n||g" /usr/bin/pecl
+yum install php70-devel.x86_64
+pecl install stats-2.0.3
