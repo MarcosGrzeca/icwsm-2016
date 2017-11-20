@@ -121,7 +121,7 @@ foreach (getRows($tweets) as $key => $value) {
 		$update = "UPDATE `tweets` SET textoParserRisadaEmoticom = '" . mysqli_real_escape_string(Connection::get(), $textoFull) . "' WHERE id = "  . $value["id"];
         //debug($textoFull);
         //debug($update);
-        //query($update);
+        query($update);
 	} catch (Exception $e) {
 		debug("ERRO");
 		debug($e->getMessage());		
