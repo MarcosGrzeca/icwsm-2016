@@ -7,4 +7,5 @@ require_once("functions/Connection.php");
 require_once("libs/ChromePhp.php");
 session_start();
 ob_start();
+ini_set('memory_limit', '2048M');
 ?>
