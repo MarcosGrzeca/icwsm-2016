@@ -57,7 +57,7 @@ $emoticonsRisos = ["😂" => " RISADA ", "😹" => " RISADA ", "😆" => " RISAD
 
 $giriasRisada = array("ALOL", "LMAO", "LMBO", "LMFAO", "LOL", "ROFL", "ROTFL", "ROFLMAO", "ROTFLMAO", "ROFLMAOWPIMP", "ROTFLMAOWPIMP", "ROFLOL", "ROTFLOL");
 
-$tweets = query("SELECT * FROM tweets WHERE situacao = 'N'");
+$tweets = query("SELECT * FROM tweets");
 
 foreach (getRows($tweets) as $key => $value) {
 	try {
@@ -66,10 +66,10 @@ foreach (getRows($tweets) as $key => $value) {
 		$texto = $tweet->text;
 		$hashTags = array();
 
-        if ($texto != replaceAll($texto)) {
+        /*if ($texto != replaceAll($texto)) {
             debug($texto);
             debug(replaceAll($texto), "I");
-        }
+        }*/
 
         $texto = replaceAll($texto);
 
