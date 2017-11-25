@@ -118,7 +118,7 @@ foreach (getRows($tweets) as $key => $value) {
         while (preg_match('/(.)\\1{2}/', $texto)) {
             $texto = preg_replace('/(.)\\1{2}/', '$1$1', $texto);
         }
-		$update = "UPDATE `tweets` SET textoParserRisadaEmoticom = '" . mysqli_real_escape_string(Connection::get(), $textoFull) . "' WHERE id = "  . $value["id"];
+		$update = "UPDATE `tweets` SET textoParserRisadaEmoticom = '" . mysqli_real_escape_string(Connection::get(), $texto) . "' WHERE id = "  . $value["id"];
         //debug($textoFull);
         //debug($update);
         query($update);
