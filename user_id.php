@@ -6,7 +6,7 @@ $tweets = query("SELECT * FROM tweets WHERE user_id = 0");
 foreach (getRows($tweets) as $key => $value) {
 	$usuario = json_decode($value["texto"], true);
 	$usuario = $usuario["user"];
-	debug($usuario);
+	//debug($usuario);
 
 	$user_id = $usuario["id"];
 	$description = $usuario["description"];
