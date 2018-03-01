@@ -23,8 +23,8 @@ class Connection {
 //			self::$conn = new mysqli("localhost", "root", "", self::$bd);
 
 		//self::$conn = new mysqli("icwsm.cg8tga6okbyx.us-east-1.rds.amazonaws.com", "root", "tum2Tres4", "icwsm");
-		self::$conn = new mysqli("icwsm.ckfgeb2fkvqp.sa-east-1.rds.amazonaws.com", "root", "tum2Tres4", "icwsm");
-		
+		self::$conn = new mysqli("icwsm.ckfgeb2fkvqp.sa-east-1.rds.amazonaws.com", "root", "senharoot123", "icwsm");
+//		die("CONEXAO MORTA");
 
 
 	    /* check connection */

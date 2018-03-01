@@ -8,19 +8,19 @@ foreach ($nlp as $key => $value) {
 	$palavras[] = $value["palavra"];
 }
 
-if (($handle = fopen("dados_2008_end_hora.csv", "r")) !== FALSE) {
+if (($handle = fopen("2008.csv", "r")) !== FALSE) {
     $headers = fgetcsv($handle, 20000, ",");
 
     $arInserir = array();
     foreach ($headers as $key => $value) {
-    	if (!in_array($value, array("idInterno", "resposta", "emoticonPos", "emoticonNeg", "localCount", "organizationCount", "moneyCount", "personCount", "numeroErros", "numeroConjuncoes", "palavroes", "name", "category", "adjetivo", "substantivo", "adverbio", "verbo", "turno", "emotiom", "emotiomH"))) {
+    	if (!in_array($value, array("idInterno", "resposta", "emoticonPos", "emoticonNeg", "localCount", "organizationCount", "moneyCount", "personCount", "numeroErros", "numeroConjuncoes", "palavroes", "name", "category", "adjetivo", "substantivo", "adverbio", "verbo", "turno", "emotiom", "emotiomH", "diaSemana"))) {
     		$arInserir[$key] = $value;
     	}
     }
     while (($data = fgetcsv($handle, 20000, ",")) !== FALSE) {
-    	foreach ($data as $key => $value) {
+        foreach ($data as $key => $value) {
     		if ($value > 0 && isset($arInserir[$key])) {
-		    	$insert = "INSERT INTO `tweets_gram` (idTweetInterno, palavra) VALUES ('" . $data[0]. "', '" . escape($arInserir[$key]) . "')";
+		    	$insert = "INSERT INTO `tweets_gram` (idTweetInterno, palavra, tipo) VALUES ('" . $data[0]. "', '" . escape($arInserir[$key]) . "', '1')";
 		    	query($insert);
 		    }
 	   	}
