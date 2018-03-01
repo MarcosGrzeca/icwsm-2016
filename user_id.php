@@ -1,7 +1,7 @@
 <?php
 require_once("config.php");
 
-$tweets = query("SELECT * FROM tweets WHERE user_id = 0");
+$tweets = query("SELECT * FROM tweets WHERE user_id = 0 LIMIT 100");
 
 foreach (getRows($tweets) as $key => $value) {
 	$usuario = json_decode($value["texto"], true);
@@ -30,7 +30,9 @@ foreach (getRows($tweets) as $key => $value) {
 	try {
 		$get = "SELECT * FROM user WHERE id = '" . escape($user_id) . "'";
 		$ret = query($get);
-
+		debug($get);
+		debug(getNumRows($ret));
+		die;
 
 		if (getNumRows($ret) == 0) {
 			$insert = "INSERT INTO `user` (id, profile_url, location, name, description, screen_name, lang, url) VALUES ('" . escape($user_id) . "', '" . escape($profile_image_url) . "', '" . escape($location) . "', '" . escape($name) . "', '"  . escape($description) . "', '"  . escape($screen_name) . "', '"  . escape($lang) . "', '"  . escape($url) . "')";
