@@ -35,7 +35,7 @@ foreach (getRows($tweets) as $key => $value) {
 
 		if ($num == 0) {
 			$insert = "INSERT INTO `user` (id, profile_url, location, name, description, screen_name, lang, url) VALUES ('" . escape($user_id) . "', '" . escape($profile_image_url) . "', '" . escape($location) . "', '" . escape($name) . "', '"  . escape($description) . "', '"  . escape($screen_name) . "', '"  . escape($lang) . "', '"  . escape($url) . "')";
-			query($insert);	
+			query($insert, false);	
 		}
 
 		$inser = "UPDATE tweets SET user_id = '" . escape($user_id) . "' WHERE id = '" . $value["id"] . "'";
