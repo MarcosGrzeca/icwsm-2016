@@ -1,7 +1,7 @@
 <?php
 require_once("config.php");
 
-$tweets = query("SELECT * FROM tweets ORDER by id");
+$tweets = query("SELECT * FROM tweets WHERE user_id = 0");
 
 foreach (getRows($tweets) as $key => $value) {
 	$usuario = json_decode($value["texto"], true);
@@ -28,7 +28,10 @@ foreach (getRows($tweets) as $key => $value) {
 	*/
 
 	try {
-		
+		$get = "UPDATE tweets SET user_id = '" . escape($user_id) . "' WHERE id = '" . $value["id"] . "'";
+		$ret = query($get);
+
+
 		$get = "SELECT * FROM user WHERE id = '" . escape($user_id) . "'";
 		$ret = query($get);
 
