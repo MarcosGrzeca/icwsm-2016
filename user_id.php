@@ -28,10 +28,6 @@ foreach (getRows($tweets) as $key => $value) {
 	*/
 
 	try {
-		$inser = "UPDATE tweets SET user_id = '" . escape($user_id) . "' WHERE id = '" . $value["id"] . "'";
-		$ret = query($inser);
-
-
 		$get = "SELECT * FROM user WHERE id = '" . escape($user_id) . "'";
 		$ret = query($get);
 
@@ -40,6 +36,9 @@ foreach (getRows($tweets) as $key => $value) {
 			$insert = "INSERT INTO `user` (id, profile_url, location, name, description, screen_name, lang, url) VALUES ('" . escape($user_id) . "', '" . escape($profile_image_url) . "', '" . escape($location) . "', '" . escape($name) . "', '"  . escape($description) . "', '"  . escape($screen_name) . "', '"  . escape($lang) . "', '"  . escape($url) . "')";
 			query($insert);	
 		}
+
+		$inser = "UPDATE tweets SET user_id = '" . escape($user_id) . "' WHERE id = '" . $value["id"] . "'";
+		$ret = query($inser);
 	} catch (Exception $e) {
 		print_r($e->getMessage());
 		die;
