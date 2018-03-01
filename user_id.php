@@ -42,7 +42,7 @@ foreach (getRows($tweets) as $key => $value) {
 		$ret = query($inser);
 	} catch (Exception $e) {
 		debug($user_id);
-		debug($tweets["id"]);
+		debug($value["id"]);
 		debug($get . " --- " . $num);
 		print_r($e->getMessage());
 		die;
