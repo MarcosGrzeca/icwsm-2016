@@ -28,8 +28,8 @@ foreach (getRows($tweets) as $key => $value) {
 	*/
 
 	try {
-		$get = "UPDATE tweets SET user_id = '" . escape($user_id) . "' WHERE id = '" . $value["id"] . "'";
-		$ret = query($get);
+		$inser = "UPDATE tweets SET user_id = '" . escape($user_id) . "' WHERE id = '" . $value["id"] . "'";
+		$ret = query($inser);
 
 
 		$get = "SELECT * FROM user WHERE id = '" . escape($user_id) . "'";
