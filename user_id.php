@@ -41,6 +41,8 @@ foreach (getRows($tweets) as $key => $value) {
 		$inser = "UPDATE tweets SET user_id = '" . escape($user_id) . "' WHERE id = '" . $value["id"] . "'";
 		$ret = query($inser);
 	} catch (Exception $e) {
+		debug($user_id);
+		debug($tweets["id"]);
 		debug($get . " --- " . $num);
 		print_r($e->getMessage());
 		die;
