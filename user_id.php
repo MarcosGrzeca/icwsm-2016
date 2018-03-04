@@ -5,40 +5,42 @@ $tweets = query("SELECT * FROM tweets WHERE user_id = 0");
 //$tweets = query("SELECT * FROM tweets LIMIT 3");
 
 foreach (getRows($tweets) as $key => $value) {
-	$usuario = json_decode($value["texto"], true);
-	$tweteer = getUserById($usuario["user"]["id"]);
-	$tweteer = json_decode($tweteer, true);
-    
-	if (isset($tweteer["errors"])) {
-		foreach ($tweteer["errors"] as $key => $erro) {
-			debug("ERRO");
-			debug($erro["code"]);
-			if ($erro["code"] == "50") {
-				//User not found - processar do tweet
-				$tweteer = $usuario["user"];
-				break;
-			}
-			if ($erro["code"] == "88") {
-				echo "EXCEDEU LIMITEs " . $ind;
-				//break 2;
-				//sleep(300);
-			}
-			throw new Exception($erro, 1);
-		}
-	}
-
-    $user_id = $tweteer["id"];
-	$description = $tweteer["description"];
-	$location = $tweteer["location"];
-	$name = $tweteer["name"];
-	$screen_name = $tweteer["screen_name"];
-	$lang = $tweteer["lang"];
-	$url = $tweteer["url"];
-	$time_zone = $tweteer["time_zone"];
-	$profile_image_url = $tweteer["profile_image_url"];
-	$profile_image_url = str_replace("_normal", "_400x400", $profile_image_url);
-
 	try {
+
+		$usuario = json_decode($value["texto"], true);
+		$tweteer = getUserById($usuario["user"]["id"]);
+		$tweteer = json_decode($tweteer, true);
+	    
+		if (isset($tweteer["errors"])) {
+			foreach ($tweteer["errors"] as $key => $erro) {
+				debug("ERRO");
+				debug($erro["code"]);
+				if ($erro["code"] == "50") {
+					//User not found - processar do tweet
+					$tweteer = $usuario["user"];
+					break;
+				}
+				if ($erro["code"] == "88") {
+					echo "EXCEDEU LIMITEs " . $ind;
+					//break 2;
+					//sleep(300);
+				}
+				throw new Exception($tweteer["errors"], 1);
+			}
+		}
+
+	    $user_id = $tweteer["id"];
+		$description = $tweteer["description"];
+		$location = $tweteer["location"];
+		$name = $tweteer["name"];
+		$screen_name = $tweteer["screen_name"];
+		$lang = $tweteer["lang"];
+		$url = $tweteer["url"];
+		$time_zone = $tweteer["time_zone"];
+		$profile_image_url = $tweteer["profile_image_url"];
+		$profile_image_url = str_replace("_normal", "_400x400", $profile_image_url);
+
+
 		$get = "SELECT * FROM user WHERE id = " . escape($user_id);
 		$ret = query($get);
 		
