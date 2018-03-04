@@ -22,6 +22,17 @@ function getTweetById($id) {
 
 }
 
+function getUserById($id) {
+    $url = 'https://api.twitter.com/1.1/users/show.json';
+    $getfield = '?user_id=' . $id;
+    $requestMethod = 'GET';
+    $twitter = new TwitterAPIExchange(getSettings());
+    return $twitter->setGetfield($getfield)
+    ->buildOauth($url, $requestMethod)
+    ->performRequest();
+
+}
+
 function read_file($local_file) {
     $linhas = array();
     $file = fopen($local_file, "r");
