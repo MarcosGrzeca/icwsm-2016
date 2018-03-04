@@ -15,7 +15,7 @@ foreach (getRows($tweets) as $key => $value) {
 			foreach ($tweteer["errors"] as $key => $erro) {
 				debug("ERRO");
 				debug($erro["code"]);
-				if ($erro["code"] == "50") {
+				if ($erro["code"] == "50" || $erro["code"] == "63") {
 					//User not found - processar do tweet
 					$tweteer = $usuario["user"];
 					break;
@@ -25,11 +25,11 @@ foreach (getRows($tweets) as $key => $value) {
 					//break 2;
 					//sleep(300);
 				}
-				throw new Exception($tweteer["errors"], 1);
+				throw new Exception(json_encode($tweteer["errors"]), 1);
 			}
 		}
 
-	    $user_id = $tweteer["id"];
+		$user_id = $tweteer["id"];
 		$description = $tweteer["description"];
 		$location = $tweteer["location"];
 		$name = $tweteer["name"];
@@ -39,7 +39,6 @@ foreach (getRows($tweets) as $key => $value) {
 		$time_zone = $tweteer["time_zone"];
 		$profile_image_url = $tweteer["profile_image_url"];
 		$profile_image_url = str_replace("_normal", "_400x400", $profile_image_url);
-
 
 		$get = "SELECT * FROM user WHERE id = " . escape($user_id);
 		$ret = query($get);
