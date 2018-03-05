@@ -24,7 +24,8 @@ foreach (getRows($tweets) as $key => $value) {
 
 function genderizer($dados) {
   $name = preg_replace("/[^a-zA-Z_\s]+/", "", $dados["name"]);
-  $name = explode(" ", trim($name))[0];
+  $nameTmp = explode(" ", trim($name));
+  $name = $nameTmp[0];
 
   $curl = curl_init();
 
