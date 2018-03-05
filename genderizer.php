@@ -1,22 +1,21 @@
 <?php
 
 require_once("config.php");
-$tweets = query("SELECT * FROM user WHERE genderizer IS NULL LIMIT 5");
+$tweets = query("SELECT * FROM user WHERE genderizer IS NULL");
 
 foreach (getRows($tweets) as $key => $value) {
   try {
     $ret = json_decode(genderizer($value), true);
     debug($ret);
 
-
     $genero = null;
     $probabilidade = 0;
-    if (!empty($ret->gender)) {
-      $genero = $ret->gender;
-      $probabilidade = $ret->probability;
+    if (!empty($ret["gender"])) {
+      $genero = ucfirst($ret["gender"]);
+      $probabilidade = $ret["probability"];
     }
 
-    $update = "UPDATE `user` SET genderizer = '" . escape($ret) . "', genderizer_gender = '" . escape($genero) . "', genderizer_prob = '" . escape($probabilidade) . "' WHERE id = "  . $value["id"];
+    $update = "UPDATE `user` SET genderizer = '" . escape(json_encode($ret)) . "', genderizer_gender = '" . escape($genero) . "', genderizer_prob = '" . escape($probabilidade) . "' WHERE id = "  . $value["id"];
     query($update);
   } catch (Exception $e) {
     var_dump($e);
