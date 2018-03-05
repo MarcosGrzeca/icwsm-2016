@@ -1,7 +1,7 @@
 <?php
 
 require_once("config.php");
-$tweets = query("SELECT * FROM user WHERE faceplusplus IS NULL OR faceplusplus = '' LIMIT 1");
+$tweets = query("SELECT * FROM user WHERE faceplusplus IS NULL OR faceplusplus = ''");
 
 foreach (getRows($tweets) as $key => $value) {
   try {
