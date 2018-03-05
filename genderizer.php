@@ -1,56 +1,50 @@
 <?php
 
 require_once("config.php");
-$tweets = query("SELECT * FROM user LIMIT 1");
+$tweets = query("SELECT * FROM user WHERE genderizer IS NULL LIMIT 5");
 
 foreach (getRows($tweets) as $key => $value) {
   try {
     $ret = json_decode(genderizer($value), true);
     debug($ret);
 
-    $genero = null;
-    $idade = 0;
 
-    /*foreach ($ret["faces"] as $key => $face) {
-      if (!empty($face["attributes"]["gender"]["value"])) {
-        $genero = $face["attributes"]["gender"]["value"];
-      }
-      if (!empty($face["attributes"]["age"]["value"])) {
-        $idade = $face["attributes"]["age"]["value"];
-      }
+    $genero = null;
+    $probabilidade = 0;
+    if (!empty($ret->gender)) {
+      $genero = $ret->gender;
+      $probabilidade = $ret->probability;
     }
 
-    debug($genero);
-    debug($idade);
-    
-    $update = "UPDATE `user` SET faceplusplus = '" . escape($ret) . "', gender_face = '" . escape($genero) . "', age_face = '" . escape($idade) . "' WHERE id = "  . $value["id"];
+    $update = "UPDATE `user` SET genderizer = '" . escape($ret) . "', genderizer_gender = '" . escape($genero) . "', genderizer_prob = '" . escape($probabilidade) . "' WHERE id = "  . $value["id"];
     query($update);
-    */
-
   } catch (Exception $e) {
     var_dump($e);
   }
 }
 
 function genderizer($dados) {
-  $curl = curl_init();
-
-  debug($dados);
-  debug($dados["profile_url"]);
+  $name = preg_replace("/[^a-zA-Z_\s]+/", "", $dados["name"]);
+  $name = explode(" ", trim($name))[0];
 
   $curl = curl_init();
 
-  $url = "https://api.genderize.io/?name=" . url_enccode($dados["name"]);
+  $url = "https://api.genderize.io/?name=" . urlencode($name);
   if ($dados["lang"] == "en") {
     $url .= "&language_id=en&country_id=us";
   }
 
+  debug($url);
+
+  $curl = curl_init();
   curl_setopt_array($curl, array(
-    CURLOPT_URL => $url
+    CURLOPT_URL => $url,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
     CURLOPT_TIMEOUT => 30,
+    CURLOPT_SSL_VERIFYHOST => 0,
+    CURLOPT_SSL_VERIFYPEER => 0,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => array(
@@ -63,6 +57,8 @@ function genderizer($dados) {
   $err = curl_error($curl);
 
   $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  debug($httpcode);
   curl_close($curl);
 
   if ($err) {

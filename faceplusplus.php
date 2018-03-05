@@ -1,16 +1,14 @@
 <?php
 
 require_once("config.php");
-$tweets = query("SELECT * FROM user LIMIT 1");
+$tweets = query("SELECT * FROM user WHERE faceplusplus IS NULL OR faceplusplus = '' LIMIT 1");
 
 foreach (getRows($tweets) as $key => $value) {
   try {
     $ret = json_decode(getFacePlusPlus($value), true);
-    debug($ret);
-
+    
     $genero = null;
     $idade = 0;
-
 
     foreach ($ret["faces"] as $key => $face) {
       if (!empty($face["attributes"]["gender"]["value"])) {
@@ -21,10 +19,7 @@ foreach (getRows($tweets) as $key => $value) {
       }
     }
 
-    debug($genero);
-    debug($idade);
-    
-    $update = "UPDATE `user` SET faceplusplus = '" . escape($ret) . "', gender_face = '" . escape($genero) . "', age_face = '" . escape($idade) . "' WHERE id = "  . $value["id"];
+    $update = "UPDATE `user` SET faceplusplus = '" . escape(json_encode($ret)) . "', gender_face = '" . escape($genero) . "', age_face = '" . escape($idade) . "' WHERE id = "  . $value["id"];
     query($update);
 
   } catch (Exception $e) {
