@@ -27,6 +27,12 @@ function genderizer($dados) {
   $nameTmp = explode(" ", trim($name));
   $name = $nameTmp[0];
 
+  if (trim($name) == "") {
+    $name = preg_replace("/[^a-zA-Z_\s]+/", "", $dados["screen_name"]);
+    $nameTmp = explode(" ", trim($name));
+    $name = $nameTmp[0];
+  }
+
   $curl = curl_init();
 
   $url = "https://api.genderize.io/?name=" . urlencode($name);
@@ -36,6 +42,7 @@ function genderizer($dados) {
 
   debug($url);
 
+  
   $curl = curl_init();
   curl_setopt_array($curl, array(
     CURLOPT_URL => $url,
