@@ -5,6 +5,7 @@ require_once("config.php");
 $idades = array();
 $idades["Male"] = array();
 $idades["Female"] = array();
+$idades["NA"] = array();
 
 
 foreach ($idades as $key => $value) {
