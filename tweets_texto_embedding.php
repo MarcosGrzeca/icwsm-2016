@@ -1,4 +1,4 @@
-<?
+<?php
 require_once("config.php");
 
 set_time_limit(0);
@@ -59,7 +59,7 @@ $emoticonsRisos = ["😂" => " RISADA ", "😹" => " RISADA ", "😆" => " RISAD
 
 $giriasRisada = array("ALOL", "LMAO", "LMBO", "LMFAO", "LOL", "ROFL", "ROTFL", "ROFLMAO", "ROTFLMAO", "ROFLMAOWPIMP", "ROTFLMAOWPIMP", "ROFLOL", "ROTFLOL");
 
-$tweets = query("SELECT * FROM tweets");
+$tweets = query("SELECT id, texto FROM tweets LIMIT 10");
 
 foreach (getRows($tweets) as $key => $value) {
     try {
@@ -121,6 +121,7 @@ foreach (getRows($tweets) as $key => $value) {
         //debug($textoFull);
         //debug($update);
         query($update);
+        die;
     } catch (Exception $e) {
         debug("ERRO");
         debug($e->getMessage());        
