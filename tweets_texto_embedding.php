@@ -59,7 +59,7 @@ $emoticonsRisos = ["😂" => " RISADA ", "😹" => " RISADA ", "😆" => " RISAD
 
 $giriasRisada = array("ALOL", "LMAO", "LMBO", "LMFAO", "LOL", "ROFL", "ROTFL", "ROFLMAO", "ROTFLMAO", "ROFLMAOWPIMP", "ROTFLMAOWPIMP", "ROFLOL", "ROTFLOL");
 
-$tweets = query("SELECT id, texto FROM tweets LIMIT 10");
+$tweets = query("SELECT id, texto FROM tweets");
 
 foreach (getRows($tweets) as $key => $value) {
     try {
@@ -118,10 +118,7 @@ foreach (getRows($tweets) as $key => $value) {
             $texto = preg_replace('/(.)\\1{2}/', '$1$1', $texto);
         }
         $update = "UPDATE `tweets` SET textEmbedding = '" . mysqli_real_escape_string(Connection::get(), $texto) . "' WHERE id = "  . $value["id"];
-        //debug($textoFull);
-        //debug($update);
         query($update);
-        die;
     } catch (Exception $e) {
         debug("ERRO");
         debug($e->getMessage());        
