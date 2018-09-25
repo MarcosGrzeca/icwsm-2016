@@ -1,7 +1,12 @@
 <?php
 require_once("config.php");
 
-$tweets = query("SELECT * FROM tweets_completo WHERE situacao = 'E'");
+$sql = "SELECT * FROM tweets_completo WHERE situacao = 'E' ";
+
+$inicio = rand(0, 1000)
+
+$sql .= "LIMIT " . $inicio . ", 500";
+$tweets = query($sql);
 
 $ind = 0;
 foreach (getRows($tweets) as $key => $value) {
@@ -14,7 +19,8 @@ foreach (getRows($tweets) as $key => $value) {
 				if ($erro->code == "88") {
 					echo "EXCEDEU LIMITEs " . $ind;
 					//break 2;
-					sleep(300);
+					// sleep(300);
+					die;
 				}
 			}
 		} else {
