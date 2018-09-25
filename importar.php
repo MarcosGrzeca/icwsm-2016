@@ -1,4 +1,4 @@
-<?
+<?php
 require_once("config.php");
 
 $tweets = query("SELECT * FROM tweets_completo WHERE situacao = 'E'");
