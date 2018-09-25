@@ -3,7 +3,7 @@ require_once("config.php");
 
 $sql = "SELECT * FROM tweets_completo WHERE situacao = 'E' ";
 
-$inicio = rand(0, 1000)
+$inicio = rand(0, 1000);
 
 $sql .= "LIMIT " . $inicio . ", 500";
 $tweets = query($sql);
