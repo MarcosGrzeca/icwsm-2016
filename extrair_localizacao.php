@@ -1,7 +1,7 @@
 <?
 require_once("config.php");
 
-$tweets = query("SELECT * FROM tweets WHERE localizacao100 IS NOT NULL");
+$tweets = query("SELECT * FROM tweets WHERE localizacao100 IS NOT NULL AND idInterno NOT IN (SELECT idTweetInterno FROM tweet_localizacao)");
 
 foreach (getRows($tweets) as $key => $value) {
 	try {
