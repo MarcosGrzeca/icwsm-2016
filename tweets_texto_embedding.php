@@ -3,10 +3,6 @@ require_once("config.php");
 
 set_time_limit(0);
 
-/*$res = getTweetById("509197123100110850");
-debug($res);
-die;*/
-
 /*
 - Converter hiperlink para #url
 - Converter mentions #mntion
@@ -59,7 +55,7 @@ $emoticonsRisos = ["😂" => " RISADA ", "😹" => " RISADA ", "😆" => " RISAD
 
 $giriasRisada = array("ALOL", "LMAO", "LMBO", "LMFAO", "LOL", "ROFL", "ROTFL", "ROFLMAO", "ROTFLMAO", "ROFLMAOWPIMP", "ROTFLMAOWPIMP", "ROFLOL", "ROTFLOL");
 
-$tweets = query("SELECT id, texto FROM tweets");
+$tweets = query("SELECT id, texto FROM tweets WHERE textEmbeddingComErrorHandling IS NULL LIMIT 500");
 
 foreach (getRows($tweets) as $key => $value) {
     try {
@@ -68,18 +64,7 @@ foreach (getRows($tweets) as $key => $value) {
         $texto = $tweet->text;
         $hashTags = array();
 
-        $texto = replaceAll($texto);
-
-        /*
-        if (isset($tweet->entities->hashtags)) {
-            foreach ($tweet->entities->hashtags as $key => $hashTag) {
-                $hashTags[] = "#" . $hashTag->text;
-            }
-            if ($hashTags) {
-                $texto = str_replace($hashTags, "", $texto);
-            }
-        }
-        */
+        //$texto = replaceAll($texto);
 
         if (isset($tweet->entities->user_mentions)) {
             $users = array();
@@ -117,15 +102,53 @@ foreach (getRows($tweets) as $key => $value) {
         while (preg_match('/(.)\\1{2}/', $texto)) {
             $texto = preg_replace('/(.)\\1{2}/', '$1$1', $texto);
         }
-        $update = "UPDATE `tweets` SET textEmbedding = '" . mysqli_real_escape_string(Connection::get(), $texto) . "' WHERE id = "  . $value["id"];
+
+        $textoSemHashaTagsApenasValidar = $texto;
+        if (isset($tweet->entities->hashtags)) {
+            foreach ($tweet->entities->hashtags as $key => $hashTag) {
+                $hashTags[] = "#" . $hashTag->text;
+            }
+            if ($hashTags) {
+                $textoSemHashaTagsApenasValidar = str_replace($hashTags, "", $texto);
+            }
+        }
+
+        // $update = "UPDATE `tweets` SET textEmbedding = '" . mysqli_real_escape_string(Connection::get(), $texto) . "' WHERE id = "  . $value["id"];
+        // query($update);
+
+        $texotIni = $texto;
+        // debug($texto);
+        $totalErros = 0;
+        $spell = spell($textoSemHashaTagsApenasValidar);
+        $spellJSON = json_decode($spell);
+
+        if (count($spellJSON->corrections)) {
+            $totalErros = 0;
+            foreach ($spellJSON->corrections as $palavraErro => $palavrasSimilares) {
+                if (ehErro($palavraErro, $palavrasSimilares, $texto)) {
+                    $totalErros++;                  
+                } else {
+                }
+            }
+        }
+
+        if ($texotIni != $texto) {
+            $marcos = 10;
+            debug("TEXTO CORRIGIDO " . $totalErros);
+            debug($texto);
+            debug("===================="); 
+        }
+
+        $update = "UPDATE `tweets` SET textEmbeddingComErrorHandling = '" . mysqli_real_escape_string(Connection::get(), $texto) . "' WHERE id = "  . $value["id"];
         query($update);
     } catch (Exception $e) {
         debug("ERRO");
-        debug($e->getMessage());        
+        debug($e->getMessage());
+        die($e);
     }
 }
 
-echo "FIM";
+echo "RESPONSE";
 
 function checkEmoji($str) 
 {
@@ -245,4 +268,112 @@ function removeEmoji($text) {
     return $clean_text;
 }
 
-?>
+function spell($text) {
+  $token = "lGazgCQaIgmshqsTCM14e16ZFWoXp1eRDWOjsnvwvYEM3SUdn1";
+  if (rand(0, 1)) {
+    $token = "9v2CvSfHZAmshXDNOhNV3qHyQeaap1Ggt0hjsneNotKCh7n7Ja";
+  }
+
+  $curl = curl_init();
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://montanaflynn-spellcheck.p.mashape.com/check/?text=" . urlencode($text),
+    CURLOPT_SSL_VERIFYHOST => 0,
+    CURLOPT_SSL_VERIFYPEER => 0,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+        "Cache-Control: no-cache",
+        "X-Mashape-Key: " . $token
+    ),
+  ));
+    
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+  $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+  curl_close($curl);
+
+  if ($err) {
+    throw new Exception($err, 1);
+  } else {
+    if ($httpcode == 200) {
+        return $response;
+    }
+    throw new Exception($response, 1);
+  }
+}
+
+function replaceRisos($texto) {
+    $texto = " " . $texto . " ";
+    $textAnt = "";
+    while ($textAnt != $texto) {
+        $textAnt = $texto;
+        $texto = preg_replace("/[^\w][hakeHAKE]{3,}[^\w]/", ' ', $texto);
+    }
+    return trim($texto);
+}
+
+function replace_full(&$text, $error, $replacement) {
+    $pattern = "/\b" . $error . "\b/i";
+    if (preg_match_all($pattern, $text, $matches)) {
+        if (count($matches) == 1) {
+            $text = preg_replace($pattern, $replacement, $text);
+        }
+    }
+ }
+
+function ehErro($palavraComErro, $sugestoes = array(), &$originalText) {
+    $girias = array("LOL", "OMG", "ILY", "LMAO", "WTF", "PPL", "IDK", "TBH", "BTW", "THX", "SMH", "FFS", "AMA", "FML", "TBT", "JK", "IMO", "YOLO", "ROFL", "MCM", "IKR", "FYI", "BRB", "GG", "IDC", "TGIF", "NSFW", "ICYMI", "STFU", "WCW", "IRL", "BFF", "OOTD", "FTW", "Txt", "HMU", "HBD", "TMI", "NM", "GTFO", "NVM", "DGAF", "FBF", "DTF", "FOMO", "SMFH", "OMW", "POTD", "LMS", "GTG", "ROFLMAO", "TTYL", "AFAIK", "LMK", "PTFO", "SFW", "HMB", "TTYS", "FBO", "TTYN");
+    $redesSociais = array("facebook", "youtube", "whatsapp", "snapchat", "twitter", "instagram", "snapchats");
+
+    $errosConhecidos = array("crossfit", "mardigras", "mardi", "gras", "mard", "gra", "#mention", "#media");
+
+    if (strlen($palavraComErro) <= 2) {
+        return false;
+    }
+
+    if (in_array(strtoupper($palavraComErro), $girias)) {
+        return false;
+    }
+    if (in_array(strtolower($palavraComErro), $redesSociais)) {
+        return false;
+    }
+    if (in_array(strtolower($palavraComErro), $errosConhecidos)) {
+        return false;
+    }
+
+    $palavraComErro = strtolower($palavraComErro);
+
+    foreach ($sugestoes as $keySugestao => $sugestao) {
+        $sugestao = strtolower($sugestao);
+
+        if ($sugestao == $palavraComErro) {
+            return false;
+        }
+
+        if (strlen($palavraComErro) >= strlen($sugestao)) {
+            if (levenshtein($palavraComErro, $sugestao, 1, 2, 1) == 1) {
+                $keyWordTwo = 0;
+                $sucesso = true;
+
+                for ($keyW = 0; $keyW < strlen($palavraComErro); $keyW++) {
+                    if (isset($sugestao[$keyWordTwo]) && $palavraComErro[$keyW] == $sugestao[$keyWordTwo]) {
+                        $keyWordTwo++;
+                    } else if ($keyWordTwo > 0 && $palavraComErro[$keyW] == $sugestao[($keyWordTwo - 1)]) {
+                    } else {
+                        $sucesso = false;
+                    }
+                }
+                if ($sucesso) {
+//                  debug("CASE levenshtein(str1, str2)");
+                    replace_full($originalText, $palavraComErro, $sugestao);
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
