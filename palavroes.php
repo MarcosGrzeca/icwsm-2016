@@ -95,7 +95,7 @@ $tweets = query('select id, SUM(total) as totalP from (
 debug(getNumRows($tweets));
 foreach (getRows($tweets) as $key => $value) {
   try {
-    $update = "UPDATE `tweets` SET numeroErros = '" . $value["totalP"] . "' WHERE id = '" . $value["id"]. "';";
+    $update = "UPDATE `tweets` SET palavroes = '" . $value["totalP"] . "' WHERE id = '" . $value["id"]. "';";
     query($update);
   } catch (Exception $e) {
     var_dump($e);
