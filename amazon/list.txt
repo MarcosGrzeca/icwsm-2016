@@ -1,0 +1,9 @@
+TODO
+amazon/facebook
+
+DOING
+genderizer
+faceplusplus
+
+DONE
+amazon/user_id
