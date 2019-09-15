@@ -13,7 +13,9 @@ function getSettings() {
 
 function getTweetById($id) {
     $url = 'https://api.twitter.com/1.1/statuses/show.json';
-    $getfield = '?id=' . $id;
+    $getfield = '?id=' . strval($id);
+
+    debug($getfield);
     $requestMethod = 'GET';
     $twitter = new TwitterAPIExchange(getSettings());
     return $twitter->setGetfield($getfield)

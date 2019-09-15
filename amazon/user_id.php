@@ -28,7 +28,7 @@ foreach (getRows($tweets) as $key => $value) {
 			}
 		}
 
-		$user_id = $tweteer["id"];
+		$user_id = $tweteer["id_str"];
 		$description = $tweteer["description"];
 		$location = $tweteer["location"];
 		$name = $tweteer["name"];

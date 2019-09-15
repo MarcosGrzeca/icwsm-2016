@@ -5,7 +5,7 @@
 
 require_once("config.php");
 
-$tweets = query("SELECT * FROM user WHERE gender = '' LIMIT 1");
+$tweets = query("SELECT * FROM user WHERE gender = '' LIMIT 10");
 //$tweets = query("SELECT * FROM tweets LIMIT 3");
 
 foreach (getRows($tweets) as $key => $value) {
