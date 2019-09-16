@@ -1,7 +1,7 @@
 <?php
 
 require_once("config.php");
-$tweets = query("SELECT * FROM user WHERE genderizer IS NULL LIMIT 500");
+$tweets = query("SELECT * FROM user WHERE genderizer IS NULL LIMIT 200");
 
 foreach (getRows($tweets) as $key => $value) {
   try {
