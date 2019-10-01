@@ -1,9 +1,9 @@
 TODO
-amazon/facebook
 
 DOING
-genderizer
 faceplusplus
 
 DONE
+genderizer
 amazon/user_id
+amazon/facebook

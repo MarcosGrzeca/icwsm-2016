@@ -7,7 +7,7 @@ foreach (getRows($tweets) as $key => $value) {
 	try {
 
 		$usuario = json_decode($value["content"], true);
-		$tweteer = getUserById($usuario["user"]["id"]);
+		$tweteer = getUserById($usuario["user"]["id_str"]);
 		$tweteer = json_decode($tweteer, true);
 	    
 		if (isset($tweteer["errors"])) {
